@@ -1,0 +1,19 @@
+{
+    "name": "boula/sae",
+    "description": "Projet",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Boula\\Sae\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nathan Boulangeot",
+            "email": "boulangeot.nathan@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
