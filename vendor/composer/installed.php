@@ -3,7 +3,7 @@
         'name' => 'boula/sae',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '806141c057facddef9fee0dfed1167a805470089',
+        'reference' => '8776f6dfb35ff92d719dd9ad85e36f966a0ba6aa',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'boula/sae' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '806141c057facddef9fee0dfed1167a805470089',
+            'reference' => '8776f6dfb35ff92d719dd9ad85e36f966a0ba6aa',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
