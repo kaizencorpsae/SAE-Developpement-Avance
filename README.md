@@ -1,95 +1,66 @@
-# KaizenCorp - SAE_Développement_Avancé Groupe K
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Notre histoire
-Nous avons choisi ce nom de groupe car “Kaizen” signifie “amélioration” en japonais et “Corp” pour représenter l’équipe. Cela fait donc référence à l'amélioration que l’on peut apporter aux projets informatiques mais aussi sur notre capacité à s’améliorer dans nos compétences. 
+## About Laravel
 
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Le fonctionnement de notre équipe
-Nous nous organisons de façon à ce que chaque membre se sente à l’aise au travail et nous essayerons au maximum de séparer les tâches efficacement pour qu’aucun ne soit surmené ou qu’aucun ne soit à court de tâches. 
-Nous programmons des séances de travail pendant chaque séance dédiée à la SAE, mais aussi pendant les journées et le week-end quand tout le monde est libre. Cela peut se faire en distanciel et en présentiel en fonction de la disponibilité des membres de l’équipe.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Forces et faiblesses de chacun
+## Learning Laravel
 
-### Aminata
-**Forces :**
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-- Intelligence Artificielle
-- Machine learning
-- HTML, CSS
-- Php
-- Python
-- Java
-- MySQL
-- Autodidacte
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-**Faiblesses :**
-- Tests logiciel
-- Virtualisation
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
+## Laravel Sponsors
 
-### Alexandre
-**Forces :**
-- Git
-  - j’ai pu manipuler GitHub pendant mon stage où j’ai appris l’intégration continue et le fonctionnement des workflows, donc je sais bien utiliser l’outil Git.
-- Backend
-  - Je sais développer et optimiser des fonctions ainsi que d’organiser mon code et de structurer des données.
-- Bases de données
-  - Je sais gérer une base de données SQL ainsi que NoSQL, vu pendant mon stage.
-- Gestion d’équipe
-  - Je suis capable de comprendre les compétences de chacun et de répartir le travail en conséquence pour être plus efficace.
-- Travail en équipe
-  - Je sais communiquer avec mon équipe via des outils de communication tel que Discord, Mattermost et GitHub pour le travail.
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-**Faiblesses :**
-- Front-end (Construction de pages web HTML et CSS)
-- Communication à l’oral (Timidité)
-- Anglais (Communication)
+### Premium Partners
 
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
+## Contributing
 
-### Nathan
-**Forces :** 
-- Développement front-end (CSS, JS etc)
-- Anglais
-- Php
-- Utilisation de Git
-- Soft skills : persévérance, esprit d’équipe
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
+## Code of Conduct
 
-**Faiblesses :**
-- Bases de données
-- Structure de code
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
+## Security Vulnerabilities
 
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-### Jawed
-**Forces :**
-- Communication
-- Apprentissage
-- Organisation
-- Base de données
-- Back-end    
+## License
 
-**Faiblesses :**
-- Front-end (design et créativité)
-- Gestion d’équipe
-
-
-
-### Mehdi
-**Forces :**
-- Créativité
-- Anglais
-- Algorithmie
-- PHP
-- SQL
-- JavaScript
-- Java
-
-**Faiblesses :**
-- HTML/CSS
-- C/C++
-- Communication 
-- Organisation
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
