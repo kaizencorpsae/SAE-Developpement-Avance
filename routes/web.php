@@ -15,3 +15,5 @@ Route::get('/home', [\App\Http\Controllers\PostController::class, 'index']);
 Route::get('/images', [ImageController::class, 'index']);
 
 Route::get('/plats', [PlatController::class, 'index']);
+
+Route::get('/search', [PlatController::class, 'search'])->name('search');

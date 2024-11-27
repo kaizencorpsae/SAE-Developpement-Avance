@@ -4,24 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Plat extends Model
+class Ingredient extends Model
 {
-    protected $table = 'plats';
-    protected $fillable = ['nom', 'description', 'image_id'];
-    public $timestamps = false;
+    protected $table = 'ingredients';
+
+    protected $fillable = ['nom', 'image_id'];
+
+    public $timestamps = false; 
 
     public function image()
     {
         return $this->belongsTo(Image::class, 'image_id');
     }
 
-    public function ingredients()
+    public function plats()
     {
         return $this->belongsToMany(
-            Ingredient::class,
+            Plat::class,
             'plat_Ingredient',
-            'plat_id',
-            'ingredient_id'
+            'ingredient_id',
+            'plat_id'
         );
     }
 }
+
+
