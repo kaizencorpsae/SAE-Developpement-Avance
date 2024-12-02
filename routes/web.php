@@ -10,10 +10,7 @@ use App\Http\Controllers\PlatController;
 
 Route::get('/', [PlatController::class, 'index']);
 
-Route::get('/home', [\App\Http\Controllers\PostController::class, 'index']);
-
-Route::get('/images', [ImageController::class, 'index']);
-
-Route::get('/plats', [PlatController::class, 'index']);
+//Route::get('/plats', [PlatController::class, 'plats']);
+Route::get('/plats', [PlatController::class, 'plats'])->name('plats');
 
 Route::get('/search', [PlatController::class, 'search'])->name('search');

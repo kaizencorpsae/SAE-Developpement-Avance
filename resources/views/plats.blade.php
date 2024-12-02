@@ -13,25 +13,6 @@
 </header>
 
 <div class="max-w-7xl mx-auto px-4">
-    <form method="GET" action="{{ route('search') }}" class="mb-6 flex items-center space-x-4">
-        <!-- Champ de recherche -->
-        <input
-                type="text"
-                name="query"
-                placeholder="Rechercher un plat ou un ingrédient"
-                class="p-3 rounded-lg bg-gray-700 text-white flex-1"
-        >
-        <!-- Bouton de recherche -->
-        <button
-                type="submit"
-                class="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700"
-        >
-            Rechercher
-        </button>
-    </form>
-</div>
-
-<div class="max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach ($plats as $plat)
             <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
@@ -50,7 +31,7 @@
 
 <!-- Footer -->
 <footer class="text-center py-6 bg-gray-900 mt-8">
-    <p class="text-gray-400">&copy; 2024 SAE - Test. Tous droits réservés.</p>
+    <p class="text-gray-400">&copy; 2024 SAE - Tous droits réservés.</p>
 </footer>
 
 </body>

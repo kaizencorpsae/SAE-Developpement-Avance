@@ -13,7 +13,7 @@
 </header>
 
 <div class="text-center mb-6">
-    <a href="/sae/plats" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">
+    <a href="/" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">
         Retour à la liste des plats
     </a>
 </div>

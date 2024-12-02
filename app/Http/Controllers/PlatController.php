@@ -9,12 +9,16 @@ class PlatController extends Controller
 {
     public function index()
     {
+        return view('index');
+    }
+
+    public function plats()
+    {
         $plats = Plat::with('image')->get();
 
         return view('plats', compact('plats'));
-
     }
-        
+
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -33,5 +37,5 @@ class PlatController extends Controller
 
         return view('search', compact('plats', 'query'));
     }
-    
+
 }
