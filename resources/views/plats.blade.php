@@ -13,10 +13,19 @@
 </header>
 
 <div class="max-w-7xl mx-auto px-4">
-    <form method="GET" action="{{ route('search') }}" class="mb-6">
-        <input type="text" name="query" placeholder="Rechercher un plat ou un ingrédient"
-               class="p-3 rounded-lg bg-gray-700 text-white w-full sm:w-1/2 mx-auto">
-        <button type="submit" class="mt-4 bg-blue-600 text-white p-3 rounded-lg w-full sm:w-auto mx-auto block">
+    <form method="GET" action="{{ route('search') }}" class="mb-6 flex items-center space-x-4">
+        <!-- Champ de recherche -->
+        <input
+                type="text"
+                name="query"
+                placeholder="Rechercher un plat ou un ingrédient"
+                class="p-3 rounded-lg bg-gray-700 text-white flex-1"
+        >
+        <!-- Bouton de recherche -->
+        <button
+                type="submit"
+                class="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700"
+        >
             Rechercher
         </button>
     </form>
