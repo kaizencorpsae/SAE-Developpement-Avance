@@ -15,7 +15,7 @@ Laravel simplifie les tâches courantes. C'est un outil puissant, favorisant une
 
 ### Mise en place
 
-Pour mettre en place le projet en local, vous aurez besoin de **PHP**, et de **MySQL**.  
+Pour mettre en place le projet en local, vous aurez besoin de **PHP composer**, et de **MySQL**.  
 
 #### MySQL
 Pour mysql, vous aurez besoin de créer une base de données et d'exécuter les scripts se trouvant sur le Google docs.
@@ -26,6 +26,7 @@ DB_DATABASE=db
 DB_USERNAME=Nath
 DB_PASSWORD=admin
 ```
+Ensuite, il faut exécuter la commande suivante : `composer install`
 
 ## Executer le projet avec php
 Pour exécuter le projet, il suffit d'exécuter la commande `php artisan serve`.  
