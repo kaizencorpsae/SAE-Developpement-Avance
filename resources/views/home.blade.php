@@ -1,10 +1,5 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Titre</title>
-</head>
-<body>
+@include('begin')
+
 <h3>SAE - TEST - Liste des Images</h3>
 <ul>
     @foreach ($images as $image)

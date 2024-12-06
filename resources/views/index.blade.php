@@ -6,7 +6,16 @@
     <h1 class="text-3xl font-semibold">Liste des Plats</h1>
 </header>
 
-<div class="max-w-7xl mx-auto px-4">
+<section id="about" class="bg-gray-700 py-12">
+    <div class="max-w-4xl mx-auto text-center px-4">
+        <h2 class="text-2xl font-bold mb-4">Bienvenue sur Let Me Cook</h2>
+        <p class="text-gray-300">
+            Ce projet a été développé dans le cadre de la SAE S5
+        </p>
+    </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 mt-8">
     <form method="GET" action="{{ route('search') }}" class="mb-6 flex items-center space-x-4">
         <input
             type="text"
