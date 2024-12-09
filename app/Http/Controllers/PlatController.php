@@ -38,4 +38,24 @@ class PlatController extends Controller
         return view('search', compact('plats', 'query'));
     }
 
+
+    public function plat(Request $request)
+    {
+        $id = $request->query('id');
+
+        if ($id) {
+            $plat = Plat::with(['image', 'ingredients'])->find($id);
+
+            if (!$plat) {
+                return redirect()->route('plats')->with('error', 'Plat non trouvé.');
+            }
+
+            $ingredients = $plat->ingredients;
+        } else {
+            return redirect()->route('plats');
+        }
+
+        return view('plat', compact('plat', 'ingredients'));
+    }
+
 }

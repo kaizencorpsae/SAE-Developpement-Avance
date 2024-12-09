@@ -14,3 +14,6 @@ Route::get('/', [PlatController::class, 'index']);
 Route::get('/plats', [PlatController::class, 'plats'])->name('plats');
 
 Route::get('/search', [PlatController::class, 'search'])->name('search');
+
+Route::get('/plat', [PlatController::class, 'plat'])->name('plat');
+
