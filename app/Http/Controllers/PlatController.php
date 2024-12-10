@@ -14,8 +14,10 @@ class PlatController extends Controller
 
     public function plats()
     {
-        $plats = Plat::with('image')->get();
-
+        $plats = Plat::with(['image', 'ingredients'])->get();
+        foreach ($plats as $plat) {
+            $plat->ingredients = $plat->ingredients;
+        }
         return view('plats', compact('plats'));
     }
 
