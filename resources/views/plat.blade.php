@@ -2,26 +2,38 @@
 <body class="bg-gray-800 text-white">
 
     <header class="text-center py-6">
-        <h3 class="text-3xl font-semibold">Détails du plat</h3>
+        <h3 class="text-3xl font-semibold">Recette du plat</h3>
     </header>
 
     <!-- Image du plat -->
-    <div class="max-w-7xl mx-auto px-4 my-6">
-        <img class="rounded-lg mx-auto" src="{{ $plat->image_url }}" alt="{{ $plat->nom }}" style="max-height: 400px; object-fit: cover;">
+    <div style="width: 80%; height: 500px; margin: 0 auto; display: flex; justify-content: center; align-items: center; border-radius: 12px; overflow: hidden;">
+        <img 
+            src="{{ $plat->image->url }}" 
+            style="width: 100%; height: 100%; object-cover: contain; border-radius: 12px;"
+        >        
     </div>
+    <h4 class="text-3xl font-semibold text-center">{{ $plat->nom }}</h4>
+    <br><br>
+
 
     <!-- Ingrédients du plat -->
     <div class="max-w-7xl mx-auto px-4 py-6">
-        <h4 class="text-2xl font-semibold mb-4">Ingrédients</h4>
+        <h4 class="text-2xl font-semibold mb-4" style="display: inline-flex; align-items: center;">
+            <img src="images/icon_ingredients.png" style="width: 35px; height: 35px; margin-right: 8px;">
+            Ingrédients
+        </h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @foreach($ingredients as $ingredient)
-                <div class="bg-gray-700 p-4 rounded-lg text-center">
-                    <img 
-                        src="{{ $ingredient->image_url }}" 
-                        alt="{{ $ingredient->nom }}" 
-                        class="w-32 h-32 mx-auto mb-3 rounded-full object-cover"
-                    >
+                <div class="bg-main-600 p-4 rounded-lg text-center">  
+                    @if($ingredient->image)
+                        <img 
+                            src="{{ $ingredient->image_url }}"  
+                            class="w-full h-64 object-cover rounded-lg mb-4"
+                        >
                     <p class="text-lg font-medium">{{ $ingredient->nom }}</p>
+                    @else
+                        <img src="/images/unknownimage.png" class="w-full h-64 object-cover rounded-lg mb-4">
+                    @endif
                 </div>
             @endforeach
         </div>
