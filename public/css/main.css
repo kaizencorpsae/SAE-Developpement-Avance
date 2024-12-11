@@ -1,0 +1,60 @@
+:root {
+    --main-color: #826d61;
+}
+html {
+    background-color: #333;
+}
+::selection {
+    background: rgba(250, 235, 230, 0.5);
+}
+
+.bg-main-850 {
+    background-color: #59514c;
+}
+.bg-main-800 {
+    background-color: #534c47;
+}
+.bg-main-750 {
+    background-color: #4c4641;
+}
+.bg-main-700 {
+    background-color: #47413d;
+}
+.bg-main-650 {
+    background-color: #403a37;
+}
+.bg-main-600 {
+    background-color: #3a3532;
+}
+
+.inputmain {
+    outline: none !important;
+    background-color: var(--main-color);
+    transition: 0.5s;
+    &:hover {
+        background-color: #a29187;
+    }
+}
+input::placeholder, textarea::placeholder {
+    color: var(--main-color) !important;
+}
+input[type="text"],
+input[type="password"]{
+    transition: 0.5s;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px #ffffff;
+    z-index: 3;
+    transition: 0.5s;
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    -webkit-background-clip: border-box !important;
+}
+
+
+section,header {
+    color: white;
+}

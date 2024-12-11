@@ -5,7 +5,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PlatController;
 
 //Route::get('/', function () {
-//    return view('welcome', ['elements' => $elements]);
+//    return view('welcome');
 //});
 
 Route::get('/', [PlatController::class, 'index']);
