@@ -28,7 +28,6 @@ class PlatController extends Controller
         if ($query) {
             $plats = Plat::with(['image', 'ingredients'])
                 ->where('nom', 'LIKE', "%{$query}%")
-                ->orWhere('description', 'LIKE', "%{$query}%")
                 ->orWhereHas('ingredients', function ($q) use ($query) {
                     $q->where('nom', 'LIKE', "%{$query}%");
                 })

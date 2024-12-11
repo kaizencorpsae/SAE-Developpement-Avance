@@ -16,7 +16,7 @@
                     @if ($plat->image)
                         <img src="{{ $plat->image->url }}" alt="{{ $plat->nom }}" class="w-full h-64 object-cover rounded-lg mb-4">
                     @else
-                        <p class="text-main-600">Aucune image disponible</p>
+                        <img src="/images/unknownimage.png" alt="unknown" class="w-full h-64 object-cover rounded-lg mb-4">
                     @endif
 
                     <h2 class="text-xl font-semibold mt-4">Ingrédients :</h2>

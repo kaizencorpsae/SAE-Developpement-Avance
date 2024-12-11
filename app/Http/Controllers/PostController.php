@@ -7,13 +7,13 @@ use App\Models\Image;
 
 class PostController extends Controller
 {
-    public function index(){
+//    public function index(){
+//
+//        $images = Image::all();
+//        return view('images.index', compact('images'));
+//
+//    }
 
-        $images = Image::all();
-        return view('images.index', compact('images'));
-        
-    }
-    
 //    public function show($id){
 //        dd($id);
 //    }
