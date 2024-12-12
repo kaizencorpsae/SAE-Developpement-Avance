@@ -54,6 +54,19 @@ input[type="password"]:focus {
     -webkit-background-clip: border-box !important;
 }
 
+.platehover {
+    transition: 0.3s;
+    img {
+        transition: 0.3s;
+    }
+}
+.platehover:hover{
+    transition: 0.3s;
+    img {
+        filter: brightness(1.1);
+        transition: 0.3s;
+    }
+}
 
 section,header {
     color: white;
