@@ -17,37 +17,37 @@ class PlatDataSeeder extends Seeder
             [
                 'nom' => 'Pizza saumon',
                 'description' => 'Pizza avec du saumon',
-                'image_id' => 1
+                'image_id' => 2
             ],
             [
                 'nom' => 'Pâtes bolognaise',
                 'description' => 'Pâtes bolognaise composé de pâtes et de sauce bolognaise',
-                'image_id' => 2
+                'image_id' => 3
             ],
             [
                 'nom' => 'Tacos',
                 'description' => 'Tacos trois viandes, salade, tomate, oignons',
-                'image_id' => 3
+                'image_id' => 4
             ],
             [
                 'nom' => 'Riz cantonnais',
                 'description' => 'Riz frit avec des oeufs, petit pois et jambon de porc',
-                'image_id' => 4
+                'image_id' => 5
             ],
             [
                 'nom' => 'Shakshuka',
                 'description' => 'Plat à base d’oeufs poché, de tomates et d’autres légumes tel que des poivrons',
-                'image_id' => 5
+                'image_id' => 6
             ],
             [
                 'nom' => 'Hamburger',
                 'description' => 'Pain de hamburger, steak haché, tranche de fromage, salade, tomate, oignons',
-                'image_id' => 6
+                'image_id' => 7
             ],
             [
                 'nom' => 'Mac n Cheese',
                 'description' => 'Des pâtes aux fromages très crémeuses',
-                'image_id' => 7
+                'image_id' => 8
             ]
         ]);
     }
