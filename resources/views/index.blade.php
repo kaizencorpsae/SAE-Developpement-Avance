@@ -28,6 +28,7 @@
             name="query"
             placeholder="Rechercher un plat ou un ingrédient"
             class="p-3 rounded-lg bg-main-700 text-white flex-1"
+            required
         >
         <button
             type="submit"
