@@ -10,6 +10,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($plats as $plat)
                 <div class="bg-main-600 p-6 rounded-lg shadow-lg">
+                    <a class="platehover" href="/plat?id={{ $plat->id }}">
                     <h2 class="text-2xl font-bold mb-2">{{ $plat->nom }}</h2>
                     <p class="text-main-600 mb-4">{{ $plat->description }}</p>
 
@@ -27,6 +28,7 @@
                             <li>Aucun ingrédient disponible.</li>
                         @endforelse
                     </ul>
+                    </a>
                 </div>
             @endforeach
         </div>
