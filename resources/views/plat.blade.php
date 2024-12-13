@@ -6,12 +6,12 @@
     </header>
 
     <!-- Image du plat -->
-    <div style="width: 80%; height: 500px; margin: 0 auto; display: flex; justify-content: center; align-items: center; border-radius: 12px; overflow: hidden;">
+    <div style="width: 60%; height: 600px; margin: 0 auto; display: flex; justify-content: center; align-items: center; border-radius: 12px; overflow: hidden;">
         <img 
             src="{{ $plat->image->url }}" 
             style="width: 100%; height: 100%; object-cover: contain; border-radius: 12px;"
         >        
-    </div>
+    </div><br>
     <h4 class="text-3xl font-semibold text-center">{{ $plat->nom }}</h4>
     <br><br>
 
@@ -27,12 +27,13 @@
                 <div class="bg-main-600 p-4 rounded-lg text-center">  
                     @if($ingredient->image)
                         <img 
-                            src="{{ $ingredient->image_url }}"  
+                            src="{{ $ingredient->image->url }}"  
                             class="w-full h-64 object-cover rounded-lg mb-4"
                         >
                     <p class="text-lg font-medium">{{ $ingredient->nom }}</p>
                     @else
                         <img src="/images/unknownimage.png" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <p class="text-lg font-medium">{{ $ingredient->nom }}</p>
                     @endif
                 </div>
             @endforeach
