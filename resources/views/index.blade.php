@@ -1,7 +1,7 @@
 @include('begin')
 
-<header class="bg-main-800 text-center py-6">
-    <h1 class="text-3xl font-semibold">Liste des Plats</h1>
+<header class="bg-main-750 text-center py-6">
+    <h1 class="text-3xl font-semibold">Accueil</h1>
 </header>
 
 <section id="about" class="bg-main-850 py-16">
@@ -32,9 +32,9 @@
         >
         <button
             type="submit"
-            class="inputmain text-white py-3 px-6 rounded-lg"
+            class="inputmain text-white py-3 px-5 rounded-lg"
         >
-            Rechercher
+            <i class="fa-light fa-magnifying-glass"></i>
         </button>
     </form>
 </div>

@@ -1,7 +1,6 @@
 @include('begin')
-<body class="bg-main-600 text-white">
 
-<header class="bg-main-800 text-center py-6">
+<header class="bg-main-750 text-center py-6">
     <h1 class="text-3xl font-semibold">Liste des Plats</h1>
 </header>
 
@@ -19,16 +18,15 @@
                     @else
                         <img src="/images/unknownimage.png" alt="unknown" class="w-full h-64 object-cover rounded-lg mb-4">
                     @endif
-
+                    </a>
                     <h2 class="text-xl font-semibold mt-4">Ingrédients :</h2>
                     <ul class="list-disc list-inside text-white">
                         @forelse ($plat->ingredients as $ingredient)
                             <li>{{ $ingredient->nom }}</li>
                         @empty
-                            <li>Aucun ingrédient disponible.</li>
+                            <li>Aucun ingrédient.</li>
                         @endforelse
                     </ul>
-                    </a>
                 </div>
             @endforeach
         </div>

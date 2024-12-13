@@ -75,16 +75,16 @@ class PlatIngredientDataSeeder extends Seeder
                 'ingredient_id' => 13
             ],
             [
-                'plat_id' => 5,
-                'ingredient_id' => 14
-            ],
-            [
                 'plat_id' => 6,
                 'ingredient_id' => 5
             ],
             [
                 'plat_id' => 6,
                 'ingredient_id' => 6
+            ],
+            [
+                'plat_id' => 6,
+                'ingredient_id' => 13
             ],
             [
                 'plat_id' => 6,
@@ -99,16 +99,16 @@ class PlatIngredientDataSeeder extends Seeder
                 'ingredient_id' => 16
             ],
             [
-                'plat_id' => 6,
-                'ingredient_id' => 17
-            ],
-            [
                 'plat_id' => 7,
                 'ingredient_id' => 3
             ],
             [
                 'plat_id' => 7,
-                'ingredient_id' => 16
+                'ingredient_id' => 15
+            ],
+            [
+                'plat_id' => 7,
+                'ingredient_id' => 17
             ],
             [
                 'plat_id' => 7,
@@ -117,10 +117,6 @@ class PlatIngredientDataSeeder extends Seeder
             [
                 'plat_id' => 7,
                 'ingredient_id' => 19
-            ],
-            [
-                'plat_id' => 7,
-                'ingredient_id' => 20
             ]
         ]);
     }
