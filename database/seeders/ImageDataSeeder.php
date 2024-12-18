@@ -30,7 +30,7 @@ class ImageDataSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'url' => ('https://i.pinimg.com/736x/4e/76/52/4e76529f0d4b0ce2a28ea1899a50f755.jpg')
+                'url' => ('https://i.pinimg.com/236x/3f/1b/a8/3f1ba88a8461086579ed5a51c067e021.jpg')
             ],
             [
                 'id' => 5,
