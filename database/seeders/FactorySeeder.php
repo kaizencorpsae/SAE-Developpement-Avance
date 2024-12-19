@@ -29,10 +29,10 @@ class FactorySeeder extends Seeder
             $this->command->info($plat->id." - ".$plat->nom." - ".$plat->description." - ".$plat->image_id);
         }
 
-        $image = Image::factory()->count(5)->create();
+        $images = Image::factory()->count(5)->create();
 
         $this->command->info("Images :");
-        foreach ($image as $image) {
+        foreach ($images as $image) {
             $this->command->info($image->id." - ".$image->url);
         }
     }
