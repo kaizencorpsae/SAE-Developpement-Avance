@@ -17,6 +17,7 @@ class PlatController extends Controller
         $plats = Plat::with(['image', 'ingredients'])->get();
         foreach ($plats as $plat) {
             $plat->ingredients = $plat->ingredients;
+            $plat->preparation = $plat->preparation;
         }
         return view('plats', compact('plats'));
     }
@@ -42,6 +43,13 @@ class PlatController extends Controller
 
     public function plat(Request $request)
     {
+        /**
+         * Affiche les détails d'un plat spécifique : 
+         * - Charge le plat avec son image et ses ingrédients via son ID.
+         * - Redirige vers la liste des plats si l'ID est absent ou invalide.
+         * - Retourne une vue avec les détails du plat et ses ingrédients.
+         */
+
         $id = $request->query('id');
 
         if ($id) {
