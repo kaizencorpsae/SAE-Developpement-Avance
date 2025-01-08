@@ -49,10 +49,15 @@ html {
     }
 }
 
-.link * {
-    transition: 0.3s;
+.link {
+    * {
+        transition: 0.2s;
+    }
     &:hover {
-        color: #c3b5ad;
+        * {
+            color: #c3b5ad;
+            transition: 0.2s;
+        }
     }
 }
 
