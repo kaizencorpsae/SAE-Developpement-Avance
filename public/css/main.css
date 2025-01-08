@@ -27,14 +27,22 @@ html {
     background-color: #3a3532;
 }
 
+.bg-header {
+    background-color: rgba(58, 53, 50, 0.75);
+    backdrop-filter: blur(15px);
+    position: fixed;
+    z-index: 20;
+    width: 100%;
+}
+
 .inputmain {
     outline: none !important;
-    background-color: rgba(162, 145, 135, 0.2);
+    background-color: rgba(162, 145, 135, 0.3);
     border-bottom: solid 3px var(--main-color);
     transition: 0.5s;
     &:hover {
-        background-color: rgba(162, 145, 135, 0.5);
-        border-bottom: solid 3px transparent;
+        background-color: rgba(162, 145, 135, 0.6);
+        border-bottom: solid 3px rgb(202, 189, 181);
     }
 }
 
@@ -49,17 +57,50 @@ html {
     }
 }
 
-.link {
-    * {
-        transition: 0.2s;
-    }
-    &:hover {
-        * {
-            color: #c3b5ad;
-            transition: 0.2s;
-        }
-    }
+/*.link{*/
+/*    transition: 0.2s;*/
+/*    a:after{*/
+/*        display: block;*/
+/*        content: '';*/
+/*        position: relative;*/
+/*        background-color: sandybrown;*/
+/*        left: 0;*/
+/*        bottom: -2px;*/
+/*        width: 100%;*/
+/*        height: 2px;*/
+/*        transition: ease 0.3s;*/
+/*    }*/
+/*    &:hover {*/
+/*        * {*/
+/*            color: #c3b5ad;*/
+/*            transition: 0.2s;*/
+/*        }*/
+/*    }*/
+/*}*/
+
+.linkheader {
+    a {
+    position: relative;
+    text-decoration: none;
+}}
+
+.linkheader a:after {
+    content: '';
+    position: absolute;
+    background-color: sandybrown;
+    bottom: -1.5em;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    opacity: 0;
+    transition: 0.3s;
 }
+
+.linkheader a:hover:after {
+    opacity: 1;
+    transition: 0.3s;
+}
+
 
 input::placeholder, textarea::placeholder {
     color: var(--main-color) !important;
