@@ -1,17 +1,19 @@
 @include('begin')
 
-<header class="bg-main-750 text-center py-6">
-    <h1 class="text-3xl font-semibold">Accueil</h1>
-</header>
-
-<section id="about" class="bg-main-850 py-16">
-    <div class="max-w-4xl mx-auto text-center px-4">
+{{--<header class="bg-main-750 text-center py-6">--}}
+{{--    <h1 class="text-3xl font-semibold"></h1>--}}
+{{--</header>--}}
+{{--bg-main-850--}}
+<section id="about" class="pb-16">
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" preload="auto" class="h-96 w-screen object-cover inset-0 z-[-1] opacity-90" style="height: 60vh"><source src="/videos/compilcooking.mp4" type="video/mp4">
+    </video>
+    <div class="max-w-4xl mx-auto text-center px-4 pt-8">
         <h2 class="text-2xl font-bold mb-4">Bienvenue sur Let Me Cook</h2>
         <p class="text-gray-300">
             Ce projet a été développé dans le cadre de la SAE S5
         </p>
     </div>
-    <div class="text-center py-10 bg-main-850">
+    <div class="text-center py-10">
         <p class="text-gray-300 mb-4">
             Pour voir la liste des plats :
         </p>
@@ -34,7 +36,7 @@
             type="submit"
             class="inputmain text-white py-3 px-5 rounded-lg"
         >
-            <i class="fa-light fa-magnifying-glass"></i>
+            <i class="fa-light fa-magnifying-glass text-gray-200"></i>
         </button>
     </form>
 </div>
