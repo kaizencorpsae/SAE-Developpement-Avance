@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plat extends Model
 {
     protected $table = 'plats';
-    protected $fillable = ['nom', 'description', 'image_id'];
+    protected $fillable = ['nom', 'description', 'preparation', 'image_id'];
     public $timestamps = false;
 
     public function image()
