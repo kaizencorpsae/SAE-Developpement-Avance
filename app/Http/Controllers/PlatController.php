@@ -44,7 +44,7 @@ class PlatController extends Controller
     public function plat(Request $request)
     {
         /**
-         * Affiche les détails d'un plat spécifique : 
+         * Affiche les détails d'un plat spécifique :
          * - Charge le plat avec son image et ses ingrédients via son ID.
          * - Redirige vers la liste des plats si l'ID est absent ou invalide.
          * - Retourne une vue avec les détails du plat et ses ingrédients.
@@ -65,6 +65,51 @@ class PlatController extends Controller
         }
 
         return view('plat', compact('plat', 'ingredients'));
+    }
+
+    //Exemples dans le Controller :
+    public function create(){
+        return view('plat.create');
+    }
+
+    public function store(Request $request){
+
+        $plat = new Plat();
+
+        $plat->nom = $request->input('nom');
+        $plat->description = $request->input('description');
+        $plat->image_id = 1;
+
+        $plat->save();
+
+        return redirect()->route('plats.index');
+    }
+
+    public function destroy($id){
+        $plat = Plat::find($id);
+
+        $plat->delete();
+
+        return redirect()->route('plats.index');
+    }
+
+    public function edit($id){
+        return view('plat.edit', [
+            'plat' => Plat::find($id)
+        ]);
+    }
+
+    public function update(Request $request, $id){
+
+        $plat = Plat::find($id);
+
+        $plat->nom = $request->input('nom');
+        $plat->description = $request->input('description');
+        $plat->image_id = 1;
+
+        $plat->update();
+
+        return redirect()->route('plats.index');
     }
 
 }
