@@ -18,9 +18,9 @@ class PlatDataSeeder extends Seeder
                 'nom' => 'Pizza saumon',
                 'description' => 'Pizza avec du saumon',
                 'image_id' => 2,
-                'preparation' => "1. Étalez la pâte à pizza, ajoutez de la sauce tomate. 
-                                  2. Disposez les morceaux de saumon. 
-                                  3. Enfournez à 220°C pendant 10-15 minutes jusqu’à ce que la pâte soit dorée.  
+                'preparation' => "1. Étalez la pâte à pizza, ajoutez de la sauce tomate.
+                                  2. Disposez les morceaux de saumon.
+                                  3. Enfournez à 220°C pendant 10-15 minutes jusqu’à ce que la pâte soit dorée.
                                   4. Ajoutez des herbes fraîches et dégustez chaud."
             ],
             [
@@ -56,32 +56,41 @@ class PlatDataSeeder extends Seeder
             [
                 'nom' => 'Shakshuka',
                 'description' => 'Plat à base d’oeufs poché, de tomates et d’autres légumes tel que des poivrons',
-                'image_id' => 6, 
-                'preparation' =>   "1. Coupez les tomates et les poivrons en dés puis émincez les oignons.  
-                                    2. Dans une poêle, faites chauffer un peu d'huile et ajoutez les oignons, puis les poivrons et les tomates. Laissez mijoter jusqu'à obtenir une sauce épaisse.  
-                                    3. Salez, poivrez, et ajoutez des épices selon vos goûts (paprika, cumin, piment, etc.).  
-                                    4. Creusez des petits nids dans la sauce et cassez un œuf dans chaque creux. 
+                'image_id' => 6,
+                'preparation' =>   "1. Coupez les tomates et les poivrons en dés puis émincez les oignons.
+                                    2. Dans une poêle, faites chauffer un peu d'huile et ajoutez les oignons, puis les poivrons et les tomates. Laissez mijoter jusqu'à obtenir une sauce épaisse.
+                                    3. Salez, poivrez, et ajoutez des épices selon vos goûts (paprika, cumin, piment, etc.).
+                                    4. Creusez des petits nids dans la sauce et cassez un œuf dans chaque creux.
                                     5. Couvrez la poêle et laissez cuire jusqu’à ce que les œufs soient cuits à votre goût."
             ],
             [
                 'nom' => 'Hamburger',
                 'description' => 'Pain de hamburger, steak haché, tranche de fromage, salade, tomate, oignons',
-                'image_id' => 7, 
-                'preparation' => "1. Lavez la salade, coupez les tomates en rondelles, émincez les oignons.  
-                                  2. Faites cuire le steak haché et ajoutez le fromage pour le faire fondre. 
-                                  3. Placez salade,, steak , fromage,  tomate, oignons , salade et refermez avec le pain.  
+                'image_id' => 7,
+                'preparation' => "1. Lavez la salade, coupez les tomates en rondelles, émincez les oignons.
+                                  2. Faites cuire le steak haché et ajoutez le fromage pour le faire fondre.
+                                  3. Placez salade,, steak , fromage,  tomate, oignons , salade et refermez avec le pain.
                                   "
             ],
             [
                 'nom' => 'Mac n Cheese',
                 'description' => 'Des pâtes aux fromages très crémeuses',
                 'image_id' => 8,
-                'preparation' =>   "1. Faites bouillir de l'eau salée et cuisez les pâtes selon les instructions sur l'emballage.  
-                                    2. Dans une casserole, faites fondre le beurre, ajoutez la farine et mélangez pour former un roux.  
-                                    3. Versez progressivement le lait dans le roux tout en fouettant, jusqu'à obtenir une sauce lisse et épaisse.  
-                                    4. Incorporez le fromage dans la sauce et mélangez jusqu’à ce qu’il soit bien fondu.  
-                                    5. Ajoutez les pâtes cuites dans la sauce au fromage et mélangez bien. Servez chaud.  
+                'preparation' =>   "1. Faites bouillir de l'eau salée et cuisez les pâtes selon les instructions sur l'emballage.
+                                    2. Dans une casserole, faites fondre le beurre, ajoutez la farine et mélangez pour former un roux.
+                                    3. Versez progressivement le lait dans le roux tout en fouettant, jusqu'à obtenir une sauce lisse et épaisse.
+                                    4. Incorporez le fromage dans la sauce et mélangez jusqu’à ce qu’il soit bien fondu.
+                                    5. Ajoutez les pâtes cuites dans la sauce au fromage et mélangez bien. Servez chaud.
                                     "
+            ],
+            [
+                'nom' => 'Jambon beurre',
+                'description' => 'Sandwich jambon beurre pour les pique-niques et autre',
+                'image_id' => 9,
+                'preparation' => "1. Coupez la baguette en deux.
+                      2. Tartinez généreusement de beurre.
+                      3. Ajoutez les tranches de jambon.
+                      4. Refermez et servez."
             ]
         ]);
     }
