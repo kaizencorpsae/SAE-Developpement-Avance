@@ -1,7 +1,7 @@
 @include('begin')
 
 <section id="about" class="pb-16 items-center h-60vh">
-    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" preload="auto" class="absolute w-screen object-cover z-0 inset-0 opacity-90 brightness-75" style="height: 60vh; filter: brightness(0.8)">
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" preload="auto" class="absolute w-screen object-cover z-0 inset-0 opacity-90 brightness-75" style="height: 60vh; filter: blur(5px) brightness(0.7);">
         <source src="/videos/compilcooking.mp4" type="video/mp4">
     </video>
     <div class="apparition relative opacity-1 flex items-center justify-center gap-48 shadow-2xl" style="z-index: 2; height: 60vh">
@@ -19,7 +19,7 @@
                     </p>
                 </div>
                 <div class="py-10 px-4">
-                    <a href="#search" onclick="document.querySelector('#search').focus();" class="inputmain text-white py-2 px-4 rounded-lg">
+                    <a href="#searchdiv" onclick="document.querySelector('#search').focus();" class="inputmain text-white py-2 px-4 rounded-lg">
                         Rechercher un plat
                     </a>
                 </div>
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-6 py-20">
+    <div id="searchdiv" class="relative max-w-7xl mx-auto px-6 py-20">
         <h2 class="text-3xl font-bold text-center mt-8 mb-14">Recherchez un plat</h2>
         <form method="GET" action="{{ route('search') }}" class="flex items-center space-x-4">
             <input
@@ -73,9 +73,9 @@
 
 <!-- Section 1 -->
 <section class="py-24 bg-main-750 text-white">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0" style="gap: 10%">
         <!-- Image -->
-        <div class="md:w-1/4">
+        <div class="">
             <i class="fa fa-light fa-magnifying-glass text-8xl text-main-500 mb-4"></i>
         </div>
         <!-- Texte -->
@@ -84,7 +84,7 @@
             <p class="text-lg mb-6">
                 Utilisez notre barre de recherche pour trouver rapidement une recette parmi des plats.
             </p>
-            <a href="#search" onclick="document.querySelector('#search').focus();" class="inputmain text-white py-3 px-5 rounded-lg bg-main-700">
+            <a href="#searchdiv" onclick="document.querySelector('#search').focus();" class="inputmain text-white py-3 px-5 rounded-lg bg-main-700">
                 Rechercher un plat
             </a>
         </div>
@@ -93,30 +93,31 @@
 
 <!-- Section 2 -->
 <section class="py-24 bg-main-800 text-white">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0" style="gap: 5%">
         <!-- Image -->
-        <div class="md:w-1/4">
-            <i class="fa fa-light fa-magnifying-glass text-8xl text-main-500 mb-4"></i>
-        </div>
+
         <!-- Texte -->
-        <div class="md:w-1/2">
+        <div class="md:w-1/2 text-right">
             <h2 class="text-3xl font-bold mb-6">Vous cherchez une recette qui contient vos ingrédients ?</h2>
             <p class="text-lg mb-6">
                 Entrez un ingrédient, et nous vous suggérerons des plats à préparer.
             </p>
-            <a href="#search" onclick="document.querySelector('#search').focus();" class="inputmain text-white py-3 px-5 rounded-lg bg-main-700">
+            <a href="#searchdiv" onclick="document.querySelector('#search').focus();" class="inputmain text-white py-3 px-5 rounded-lg bg-main-700">
                 Commencer la recherche
             </a>
+        </div>
+        <div class="">
+            <i class="fa fa-light fa-strawberry text-8xl text-main-500 mb-4"></i>
         </div>
     </div>
 </section>
 
 <!-- Section 3 -->
 <section class="py-24 bg-main-750 text-white">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0" style="gap: 10%">
         <!-- Image -->
-        <div class="md:w-1/4">
-            <i class="fa fa-light fa-magnifying-glass text-8xl text-main-500 mb-4"></i>
+        <div class="">
+            <i class="fa fa-regular fa-sushi text-8xl text-main-500 mb-4"></i>
         </div>
         <!-- Texte -->
         <div class="md:w-1/2">
