@@ -2,7 +2,7 @@
 
 <body class="bg-main-800 text-white">
 
-<header class="text-center py-6">
+<header class="text-center py-6 pt-28">
     <h1 class="text-3xl font-semibold">Résultats pour "{{ $query }}"</h1>
 </header>
 <div class="text-center mb-6">

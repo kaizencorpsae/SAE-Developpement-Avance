@@ -1,7 +1,7 @@
 @include('begin')
 
 <!-- Entête avec le nom du plat -->
-<header class="bg-main-750 text-center py-6">
+<header class="bg-main-750 text-center py-6 pt-28">
     <h1 class="text-3xl font-semibold">{{ $plat->nom }}</h1>
 </header>
 
