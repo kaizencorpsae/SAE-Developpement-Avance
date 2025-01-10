@@ -18,11 +18,11 @@
 
     <!-- Afficher les ingrédients -->
     <h4 class="text-3xl font-semibold mb-4 flex items-center">
-        <img src="images/icon_ingredients.png" class="w-9 h-9 mr-2" alt="">
+        <img src="{{ asset('images/icon_ingredients.png') }}" class="w-9 h-9 mr-2" alt="">
         Ingrédients
     </h4>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        @foreach($ingredients as $ingredient)
+        @foreach($plat->ingredients as $ingredient)
             <div class="bg-main-650 p-4 rounded-lg text-center">
                 @if($ingredient->image)
                     <img
@@ -30,7 +30,7 @@
                         class="w-full h-40 object-cover rounded-lg mb-4"
                      alt="">
                 @else
-                    <img src="/images/unknownimage.png" class="w-full h-40 object-cover rounded-lg mb-4" alt="">
+                    <img src="{{ asset('/images/unknownimage.png') }}" class="w-full h-40 object-cover rounded-lg mb-4" alt="">
                 @endif
                 <p class="text-lg font-medium">{{ $ingredient->nom }}</p>
             </div>
@@ -40,7 +40,7 @@
     <!--Afficher la préparation -->
     <div>
     <h4 class="text-3xl font-semibold mb-4 flex items-center">
-        <img src="images/icon_preparation.png" class="w-11 h-11 mr-2">
+        <img src="{{asset('images/icon_preparation.png')}}" class="w-11 h-11 mr-2" alt="">
         Préparation
     </h4>
     <ul class="pl-5 text-xl list-none">

@@ -1,23 +1,18 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PlatController;
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/', [PlatController::class, 'index']);
-
-//Route::get('/plats', [PlatController::class, 'plats']);
-Route::get('/plats', [PlatController::class, 'plats'])->name('plats');
+//Route::get('/plats', [PlatController::class, 'plats'])->name('plats');
 
 Route::get('/search', [PlatController::class, 'search'])->name('search');
 
-Route::get('/plat', [PlatController::class, 'plat'])->name('plat');
+//Route::get('/plat', [PlatController::class, 'plat'])->name('plat');
 
-//Route::resource('plats', PlatController::class)->except(['show']);
+Route::resource('plats', PlatController::class);
 /*
 "ressource" permet de créer plusieurs pages pour le CRUD
 - index = page de base du produit
