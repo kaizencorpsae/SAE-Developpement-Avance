@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Ingredient;
+use App\Models\Plat_Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plat;
@@ -57,7 +59,7 @@ class PlatController extends Controller
 
     //Exemples dans le Controller :
     public function create(){
-        return view('plat.create');
+        return view('plat.create', ['ingredients' => Ingredient::all()]);
     }
 
     public function store(Request $request){
@@ -69,13 +71,18 @@ class PlatController extends Controller
         $plat->image_id = 1;
 
         $preparation = $request->input('preparation');
-        if(!isEmpty($preparation)) {
-            $plat->preparation = $preparation;
-        }
+        $plat->preparation = $preparation ?? '"Pas de préparation"';
 
         $plat->save();
 
-        return redirect()->route('plats.index');
+        $plat_ingredient = new Plat_ingredient();
+
+        $plat_ingredient->plat_id = $plat->id;
+        $plat_ingredient->ingredient_id = $request->input('ingredient');
+
+        $plat_ingredient->save();
+
+        return redirect()->route('plats.show', $plat->id);
     }
 
     public function destroy($id){
@@ -98,11 +105,15 @@ class PlatController extends Controller
 
         $plat->nom = $request->input('nom');
         $plat->description = $request->input('description');
-        $plat->image_id = 1;
+
+        $plat->image_id = $request->input('image_id');
+
+        $preparation = implode("\n", $request->input('preparation'));
+        $plat->preparation = $preparation;
 
         $plat->update();
 
-        return redirect()->route('plats.index');
+        return redirect()->route('plats.show', $id);
     }
 
 }
