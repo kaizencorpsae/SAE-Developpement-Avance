@@ -119,11 +119,24 @@ html {
 input::placeholder, textarea::placeholder {
     color: var(--main-color) !important;
 }
+
 input[type="text"],
 input[type="password"]{
     transition: 0.5s;
     border-bottom: solid 3px var(--main-color);
+
 }
+
+.crud{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input[type="text"],
+    textarea{
+        background-color: #544d49;
+    }
+}
+
 input[type="text"]:focus,
 input[type="password"]:focus {
     outline: none;
