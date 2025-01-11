@@ -29,7 +29,7 @@
                 <h1 class="text-3xl font-semibold text-white" style="font-family: Amiri;">LetMeCook</h1>
         </a>
         <div class="flex items-center justify-between space-x-8">
-            <a href="/plats" class="flex items-center">
+            <a href="{{route('plats.index')}}" class="flex items-center">
                 <h1 class="text-3xl font-semibold text-white">Plats</h1>
             </a>
             <form method="GET" action="{{ route('search') }}" class="flex items-center space-x-2">

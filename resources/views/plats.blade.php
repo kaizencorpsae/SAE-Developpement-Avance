@@ -27,6 +27,12 @@
                             <li>Aucun ingrédient.</li>
                         @endforelse
                     </ul>
+                    <form action="{{ route("plats.destroy", $plat->id) }}" method="post">
+                        @csrf
+                        @method("delete")
+                        <input type="submit" value="supprimer">
+                    </form>
+                    <a href="{{route('plats.edit', $plat->id)}}">Modifier</a>
                 </div>
             @endforeach
         </div>
