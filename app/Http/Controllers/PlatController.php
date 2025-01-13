@@ -1,18 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Ingredient;
+use App\Models\Plat_Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plat;
+use function PHPUnit\Framework\isEmpty;
 
 class PlatController extends Controller
 {
     public function index()
-    {
-        return view('index');
-    }
-
-    public function plats()
     {
         $plats = Plat::with(['image', 'ingredients'])->get();
         foreach ($plats as $plat) {
@@ -41,7 +39,7 @@ class PlatController extends Controller
     }
 
 
-    public function plat(Request $request)
+    public function show($id)
     {
         /**
          * Affiche les détails d'un plat spécifique :
@@ -50,26 +48,18 @@ class PlatController extends Controller
          * - Retourne une vue avec les détails du plat et ses ingrédients.
          */
 
-        $id = $request->query('id');
+        $plat = Plat::with(['image', 'ingredients'])->find($id);
 
-        if ($id) {
-            $plat = Plat::with(['image', 'ingredients'])->find($id);
-
-            if (!$plat) {
-                return redirect()->route('plats')->with('error', 'Plat non trouvé.');
-            }
-
-            $ingredients = $plat->ingredients;
-        } else {
-            return redirect()->route('plats');
+        if(!$plat) {
+            return redirect()->route('plats.index');
         }
 
-        return view('plat', compact('plat', 'ingredients'));
+        return view('plat', compact('plat'));
     }
 
     //Exemples dans le Controller :
     public function create(){
-        return view('plat.create');
+        return view('plat.create', ['ingredients' => Ingredient::all()]);
     }
 
     public function store(Request $request){
@@ -80,9 +70,19 @@ class PlatController extends Controller
         $plat->description = $request->input('description');
         $plat->image_id = 1;
 
+        $preparation = $request->input('preparation');
+        $plat->preparation = $preparation ?? '"Pas de préparation"';
+
         $plat->save();
 
-        return redirect()->route('plats.index');
+        $plat_ingredient = new Plat_ingredient();
+
+        $plat_ingredient->plat_id = $plat->id;
+        $plat_ingredient->ingredient_id = $request->input('ingredient');
+
+        $plat_ingredient->save();
+
+        return redirect()->route('plats.show', $plat->id);
     }
 
     public function destroy($id){
@@ -105,11 +105,15 @@ class PlatController extends Controller
 
         $plat->nom = $request->input('nom');
         $plat->description = $request->input('description');
-        $plat->image_id = 1;
+
+        $plat->image_id = $request->input('image_id');
+
+        $preparation = implode("\n", $request->input('preparation'));
+        $plat->preparation = $preparation;
 
         $plat->update();
 
-        return redirect()->route('plats.index');
+        return redirect()->route('plats.show', $id);
     }
 
 }

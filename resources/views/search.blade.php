@@ -2,7 +2,7 @@
 
 <body class="bg-main-800 text-white">
 
-<header class="text-center py-6">
+<header class="text-center py-6 pt-28">
     <h1 class="text-3xl font-semibold">Résultats pour "{{ $query }}"</h1>
 </header>
 <div class="text-center mb-6">
@@ -18,7 +18,7 @@
         @else
             @foreach($plats as $plat)
                 <div class="bg-main-600 p-6 rounded-lg shadow-lg">
-                    <a class="platehover" href="/plat?id={{ $plat->id }}">
+                    <a class="platehover" href="{{route("plats.show",$plat->id)}}">
                         <h2 class="text-2xl font-bold mb-2">{{ $plat->nom }}</h2>
                         <p class="text-grey-600 mb-4">{{ $plat->description }}</p>
                         @if($plat->image)
