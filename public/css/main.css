@@ -1,5 +1,6 @@
 :root {
     --main-color: #978e89;
+    --main-light-color: #CABDB5;
 }
 html {
     background-color: #333;
@@ -38,8 +39,23 @@ html {
     width: 100%;
 }
 
+.text-main-grey {
+    color: var(--main-light-color);
+}
+
 .h-60vh{
     height: 60vh;
+}
+
+.alata {
+    font-family: Alata, sans-serif;
+}
+.amiri{
+    font-family: Amiri, serif;
+}
+
+.ptheader {
+    padding-top: 5rem;
 }
 
 .apparition{
@@ -71,6 +87,32 @@ html {
     }
 }
 
+.lmc a{
+    transition: 0.5s;
+    &:hover{
+        color: var(--main-light-color);
+    }
+}
+
+.lmcborder{
+    border: 2px solid var(--main-color);
+}
+
+#plat {
+    .imgplat{
+        border-bottom: 2px solid var(--main-color);
+        border-radius: 0 0 0.5em 0.5em;
+    }
+    hr{
+        /*width: auto;*/
+        border: none;
+        height: 2px;
+        border-radius: 30px;
+        background-color: var(--main-color);
+    }
+}
+
+
 /*.link{*/
 /*    transition: 0.2s;*/
 /*    a:after{*/
@@ -94,15 +136,17 @@ html {
 
 .linkheader {
     a {
-    position: relative;
-    text-decoration: none;
-}}
+        position: relative;
+        text-decoration: none;
+    }
+    height: 100%;
+}
 
 .linkheader a:after {
     content: '';
     position: absolute;
-    background-color: sandybrown;
-    bottom: -1.5em;
+    background-color: var(--main-light-color);
+    bottom: -0.25rem;
     left: 0;
     height: 2px;
     width: 100%;
@@ -115,7 +159,6 @@ html {
     transition: 0.3s;
 }
 
-
 input::placeholder, textarea::placeholder {
     color: var(--main-color) !important;
 }
@@ -124,17 +167,6 @@ input[type="text"],
 input[type="password"]{
     transition: 0.5s;
     border-bottom: solid 3px var(--main-color);
-
-}
-
-.crud{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    input[type="text"],
-    textarea{
-        background-color: #544d49;
-    }
 }
 
 input[type="text"]:focus,
@@ -148,6 +180,25 @@ input[type="password"]:focus {
     background-color: #544d49 !important;
     backdrop-filter: blur(20px);
     -webkit-background-clip: border-box !important;
+}
+
+footer {
+    hr {
+        border: none;
+        height: 2px;
+        border-radius: 30px;
+        background-color: var(--main-color);
+    }
+}
+
+.crud{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input[type="text"],
+    textarea{
+        background-color: #544d49;
+    }
 }
 
 .platehover {

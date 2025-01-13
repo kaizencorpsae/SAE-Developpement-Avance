@@ -4,7 +4,7 @@
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" preload="auto" class="absolute w-screen object-cover z-0 inset-0 opacity-90 brightness-75" style="height: 60vh; filter: blur(5px) brightness(0.7);">
         <source src="/videos/compilcooking.mp4" type="video/mp4">
     </video>
-    <div class="apparition relative opacity-1 flex items-center justify-center gap-48 shadow-2xl" style="z-index: 2; height: 60vh">
+    <div class="relative opacity-1 flex items-center justify-center gap-48 shadow-2xl apparition" style="z-index: 2; height: 60vh">
 
         <div class="flex-shrink-0 justify-center">
             <img src="/images/letmecooklogocomplete.png" alt="Logo" class="h-24">
@@ -30,7 +30,7 @@
 
 <!-- Section Fonctionnalités -->
 <section id="features" class="pt-16 bg-main-850 py-10">
-    <div class="max-w-7xl mx-auto px-6 py-10">
+    <div class="max-w-7xl mx-auto px-6 py-10 apparition">
         <h2 class="text-3xl font-bold text-center mb-14">Pourquoi utiliser Let Me Cook ?</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-main-900 text-center p-8 rounded-lg shadow-2xl">
@@ -50,14 +50,14 @@
             </div>
         </div>
     </div>
-    <div id="searchdiv" class="relative max-w-7xl mx-auto px-6 py-20">
+    <div id="searchdiv" class="relative max-w-7xl mx-auto px-6 py-20 apparition">
         <h2 class="text-3xl font-bold text-center mt-8 mb-14">Recherchez un plat</h2>
         <form method="GET" action="{{ route('search') }}" class="flex items-center space-x-4">
             <input
                 type="text"
                 name="query"
                 id="search"
-                placeholder="Rechercher un plat ou un ingrédient"
+                placeholder="Rechercher un plat ou ingrédient"
                 class="p-3 rounded-lg bg-main-700 text-white flex-1"
                 required
             >
@@ -73,7 +73,7 @@
 
 <!-- Section 1 -->
 <section class="py-24 bg-main-750 text-white">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0" style="gap: 10%">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0 apparition" style="gap: 5%">
         <!-- Image -->
         <div class="">
             <i class="fa fa-light fa-magnifying-glass text-8xl text-main-500 mb-4"></i>
@@ -93,7 +93,7 @@
 
 <!-- Section 2 -->
 <section class="py-24 bg-main-800 text-white">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0" style="gap: 5%">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0 apparition" style="gap: 5%">
         <!-- Image -->
 
         <!-- Texte -->
@@ -114,10 +114,10 @@
 
 <!-- Section 3 -->
 <section class="py-24 bg-main-750 text-white">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0" style="gap: 10%">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-evenly items-center space-y-8 md:space-y-0 apparition" style="gap: 5%">
         <!-- Image -->
         <div class="">
-            <i class="fa fa-regular fa-sushi text-8xl text-main-500 mb-4"></i>
+            <i class="fa fa-light fa-pot-food text-8xl text-main-500 mb-4"></i>
         </div>
         <!-- Texte -->
         <div class="md:w-1/2">

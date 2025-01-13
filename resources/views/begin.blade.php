@@ -16,20 +16,22 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-light.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Comfortaa:wght@300..700&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <script src="js/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Comfortaa:wght@300;700&family=Inconsolata:wght@200;900&family=Inter:wght@100;400;900&family=Poppins:wght@100;400;700;900&family=Source+Code+Pro:wght@200;900&display=swap" rel="stylesheet">
+    <script src="/js/main.js"></script>
 </head>
 
 <body class="bg-main-800 text-white">
 
 <header class="bg-header header py-1 shadow-lg h-20">
-    <div class="linkheader max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center space-x-4">
-                <img src="/images/letmecooklogocomplete.png" alt="Logo" class="w-16 h-8">
-                <h1 class="text-3xl font-semibold text-white" style="font-family: Amiri;">LetMeCook</h1>
+    <div class="linkheader max-w-7xl h-full mx-auto px-4 flex items-center justify-between">
+        <a href="/" class="flex items-center space-x-4 items-end h-full">
+                <img src="/images/letmecooklogobig.png" alt="Logo" class="w-16 h-16">
+                <h1 class="text-3xl font-semibold pt-4 text-white amiri">LetMeCook</h1>
         </a>
-        <div class="flex items-center justify-between space-x-8">
-            <a href="{{route('plats.index')}}" class="flex items-center">
+        <div class="flex items-center justify-between space-x-8 h-full">
+            <a href="{{route('plats.index')}}" class="flex items-center h-full">
                 <h1 class="text-3xl font-semibold text-white">Plats</h1>
             </a>
             <form method="GET" action="{{ route('search') }}" class="flex items-center space-x-2">
