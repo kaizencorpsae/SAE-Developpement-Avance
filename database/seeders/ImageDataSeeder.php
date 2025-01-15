@@ -30,7 +30,7 @@ class ImageDataSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'url' => ('https://i.pinimg.com/236x/3f/1b/a8/3f1ba88a8461086579ed5a51c067e021.jpg')
+                'url' => ('https://croc-gourmand.fr/wp-content/uploads/2021/04/french-tacos-2048x1638.jpeg')
             ],
             [
                 'id' => 5,
@@ -42,7 +42,7 @@ class ImageDataSeeder extends Seeder
             ],
             [
                 'id' => 7,
-                'url' => ('https://api.toutlevin.com/images/5246262ff9b387d2dae7e4f1579af965.jpg?width=1200&quality=75')
+                'url' => ('https://api.toutlevin.com/images/5246262ff9b387d2dae7e4f1579af965.jpg?width=1200&quality=100')
             ],
             [
                 'id' => 8,
@@ -131,6 +131,10 @@ class ImageDataSeeder extends Seeder
             [
                 'id' => 118,
                 'url' => 'https://www.regal.fr/sites/art-de-vivre/files/lait-thinkstockphotos-149151468.jpg'
+            ],
+            [
+                'id' => 119,
+                'url' => 'https://img.passeportsante.net/1200x675/2021-05-03/i102021-cornichon.webp'
             ]
         ]);
     }

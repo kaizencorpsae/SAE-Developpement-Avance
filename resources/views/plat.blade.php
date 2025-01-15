@@ -12,9 +12,9 @@
                 alt="{{ $plat->nom }}"
             >
         </div>
-        <div class="w-3/4 py-16 flex flex-col space-between">
+        <div class="w-3/4 py-16 flex flex-col space-between ">
             <div id="description" class="w-full">
-                <div class="flex flex-row justify-between w-full mb-4">
+                <div class="flex flex-row gap-8 justify-between w-full mb-4">
                     <h4 class="text-3xl font-semibold mb-4 flex items-center">
                         <img src="{{ asset('images/icon_text.png') }}" class="w-9 h-9 mr-4" alt="">
                         Description
@@ -25,7 +25,7 @@
             </div>
 
             <div id="ingredients" class="w-full mt-20 mb-6">
-                <div class="flex flex-row justify-between w-full mb-5">
+                <div class="flex flex-row gap-8 justify-between w-full mb-5">
                     <h4 class="text-3xl font-semibold mb-4 flex items-center">
                         <img src="{{ asset('images/icon_ingredients.png') }}" class="w-9 h-9 mr-4" alt="">
                         Ingrédients
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div id="preparation" class="w-full mt-20 mb-12">
-                <div class="flex flex-row justify-between w-full mb-5">
+                <div class="flex flex-row gap-8 justify-between w-full mb-5">
                     <h4 class="text-3xl font-semibold mb-4 flex items-center">
                         <img src="{{ asset('images/icon_preparation.png') }}" class="w-9 h-9 mr-4" alt="">
                         Préparation

@@ -129,6 +129,10 @@ class PlatIngredientDataSeeder extends Seeder
             [
                 'plat_id' => 8,
                 'ingredient_id' => 17
+            ],
+            [
+                'plat_id' => 8,
+                'ingredient_id' => 20
             ]
         ]);
     }

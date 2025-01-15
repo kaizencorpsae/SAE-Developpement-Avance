@@ -108,6 +108,11 @@ class IngredientDataSeeder extends Seeder
                 'id' => 19,
                 'nom' => 'Lait',
                 'image_id' => 118
+            ],
+            [
+                'id' => 20,
+                'nom' => 'Cornichon',
+                'image_id' => 119
             ]
         ]);
     }
