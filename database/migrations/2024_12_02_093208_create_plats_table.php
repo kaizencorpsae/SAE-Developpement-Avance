@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nom');
             $table->text('description');
             $table->unsignedBigInteger('image_id')->default(1);
+            $table->text("preparation")->nullable();
             $table->foreign('image_id')->references('id')->on('images');
             $table->timestamps();
         });

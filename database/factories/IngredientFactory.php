@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Image;
 use App\Models\Ingredient;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ingredient>
@@ -18,11 +20,12 @@ class IngredientFactory extends Factory
      */
     public function definition(): array
     {
+        $idimage = DB::table('images')->max('id');
         return [
             'nom' => $this->faker->randomElement([
                 'Tomate', 'Poulet', 'Salade', 'Poivron', 'Carotte'
             ]),
-            'image_id' => 1,
+            'image_id' => Image::factory(),
         ];
     }
 }
