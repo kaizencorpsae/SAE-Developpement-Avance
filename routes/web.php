@@ -1,16 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlatController;
 
 Route::get('/', [HomeController::class, 'index']);
-
-//Route::get('/plats', [PlatController::class, 'plats'])->name('plats');
+Route::get('/about', [HomeController::class, 'about']);
 
 Route::get('/search', [PlatController::class, 'search'])->name('search');
-
-//Route::get('/plat', [PlatController::class, 'plat'])->name('plat');
 
 Route::resource('plats', PlatController::class);
 /*
@@ -23,5 +21,4 @@ Route::resource('plats', PlatController::class);
 - destroy (method delete) = Fonction dans le Controller pour supprimer les données
 - show = page pour afficher des données
 */
-
 

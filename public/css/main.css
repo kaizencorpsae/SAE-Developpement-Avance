@@ -218,3 +218,17 @@ footer {
 section,header {
     color: white;
 }
+
+.force{
+    p::before{
+        content: "+ ";
+        color: #0AD10A;
+    }
+}
+
+.faiblesse{
+    p::before{
+        content: "- ";
+        color: #FF5A5A;
+    }
+}

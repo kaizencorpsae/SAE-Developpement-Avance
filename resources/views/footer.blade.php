@@ -9,7 +9,7 @@
             <div class="flex flex-col space-y-4 text-2xl lmc">
                 <a href="#searchdiv">Rechercher un plat</a>
                 <a href="/plats">Liste des plats</a>
-                <a href="/plats">Qui sommes nous</a>
+                <a href="/about">Qui sommes nous</a>
             </div>
             <div class="mt-4 text-xl">
                 <p class="text-main-600" style="line-height: 1.3;">&copy; 2025 KaizenCorp - Tous droits réservés.</p>
