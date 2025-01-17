@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Image;
 use App\Models\Ingredient;
 use App\Models\Plat;
+use App\Models\Plat_Ingredient;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -35,5 +36,14 @@ class FactorySeeder extends Seeder
         foreach ($images as $image) {
             $this->command->info($image->id." - ".$image->url);
         }
+
+        $plat_ingredient = Plat::factory()->hasAttached(Ingredient::factory(random_int(2,5)))->create();
+        $ingredientIds = $plat_ingredient->ingredients->pluck('id')->toArray();
+
+        $this->command->info("Plat_Ingredients :");
+        foreach ($ingredientIds as $ingredientId) {
+            $this->command->info($plat_ingredient->id." - ".$ingredientId);
+        }
+
     }
 }
