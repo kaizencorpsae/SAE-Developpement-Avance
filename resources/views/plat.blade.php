@@ -7,7 +7,7 @@
         </div>
         <div class="w-full mx-auto overflow-hidden shadow-lg imgplat">
             <img
-                src="{{ $plat->image->url }}"
+                src="{{ asset($plat->image->url) }}"
                 class="w-full h-80 object-cover"
                 alt="{{ $plat->nom }}"
             >

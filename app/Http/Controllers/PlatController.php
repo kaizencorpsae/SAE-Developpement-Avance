@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Image;
 use App\Models\Ingredient;
 use App\Models\Plat_Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plat;
+use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\isEmpty;
 
 class PlatController extends Controller
@@ -64,23 +66,42 @@ class PlatController extends Controller
 
     public function store(Request $request){
 
+        $image = new Image();
+
+        $file = $request->file('image');
+
+        $id_image = 1;
+        if ($file) {
+            $path = $file->store('images/plats', 'public');
+
+            $image->url = Storage::url($path);
+
+            $image->save();
+
+            $id_image = $image->id;
+        }
+
+
         $plat = new Plat();
 
         $plat->nom = $request->input('nom');
         $plat->description = $request->input('description');
-        $plat->image_id = 1;
+        $plat->image_id = $id_image;
 
         $preparation = $request->input('preparation');
         $plat->preparation = $preparation ?? '"Pas de préparation"';
 
         $plat->save();
 
-        $plat_ingredient = new Plat_ingredient();
+        $ingredients = $request->input('ingredient');
+        foreach ($ingredients as $ingredient) {
+            $plat_ingredient = new Plat_ingredient();
 
-        $plat_ingredient->plat_id = $plat->id;
-        $plat_ingredient->ingredient_id = $request->input('ingredient');
+            $plat_ingredient->plat_id = $plat->id;
+            $plat_ingredient->ingredient_id = $ingredient;
 
-        $plat_ingredient->save();
+            $plat_ingredient->save();
+        }
 
         return redirect()->route('plats.show', $plat->id);
     }

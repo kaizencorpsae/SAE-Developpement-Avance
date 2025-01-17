@@ -191,15 +191,18 @@ footer {
     }
 }
 
-.crud{
-    display: flex;
-    align-items: center;
+#crud{
     justify-content: center;
+
     input[type="text"],
-    textarea{
-        background-color: #544d49;
+    textarea,
+    select{
+        padding: .5rem;
+        background-color: #47413d;
+        margin-bottom: 10px;
     }
 }
+
 
 .platehover {
     transition: 0.3s;
