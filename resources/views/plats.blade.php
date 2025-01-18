@@ -3,7 +3,11 @@
 <header class="bg-main-750 text-center py-6 pt-28">
     <h1 class="text-3xl font-semibold">Liste des Plats</h1>
 </header>
-
+@if(session('status'))
+    <div class="alert alert-danger text-center" role="alert">
+        {{ session('status') }}
+    </div>
+@endif
 <div class="bg-main-850 py-10">
     <div class="max-w-7xl mx-auto px-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -37,7 +41,9 @@
             @endforeach
         </div>
     </div>
-
+    <div class="d-flex flex justify-center mt-5">
+        {{ $plats->links() }}
+    </div>
 
 </div>
 

@@ -14,11 +14,7 @@ class PlatController extends Controller
 {
     public function index()
     {
-        $plats = Plat::with(['image', 'ingredients'])->get();
-        foreach ($plats as $plat) {
-            $plat->ingredients = $plat->ingredients;
-            $plat->preparation = $plat->preparation;
-        }
+        $plats = Plat::with(['image', 'ingredients'])->paginate(6);
         return view('plats', compact('plats'));
     }
 
@@ -109,14 +105,24 @@ class PlatController extends Controller
     public function destroy($id){
         $plat = Plat::find($id);
 
+        if(!$plat) {
+            return redirect()->route('plats.index')->with('status', 'Le plat est introuvable');;
+        }
+
         $plat->delete();
 
         return redirect()->route('plats.index');
     }
 
     public function edit($id){
+        $plat = Plat::find($id);
+
+        if(!$plat) {
+            return redirect()->route('plats.index')->with('status', 'Le plat est introuvable');
+        }
+
         return view('plat.edit', [
-            'plat' => Plat::find($id)
+            'plat' => $plat
         ]);
     }
 
