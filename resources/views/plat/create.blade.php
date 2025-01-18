@@ -20,17 +20,20 @@
                 <input type="file" name="image">
 
                 <div class="space-y-4">
-                    <div id="ingredients">
+                    <div id="ingredients1">
                         <p>Ingrédients 1 :</p>
                         <select name="ingredient[]">
                             @foreach($ingredients as $ingredient)
                                 <option value="{{$ingredient->id}}">{{$ingredient->nom}}</option>
                             @endforeach
+
                         </select>
                     </div>
-                    <button id="ajouter" type="button" class="inputmain text-white py-2 px-5 rounded-lg">Ajouter un ingrédient</button>
+
                     <!--Ajouter une liste déroulante dynamique avec des tags-->
                 </div>
+                <button id="ajouter" type="button" class="inputmain text-white py-2 px-5 rounded-lg">Ajouter un ingrédient</button>
+                <br>
                 <input type="submit" value="Envoyer" class="inputmain text-white py-2 px-5 rounded-lg">
             </form>
         </div>
@@ -38,22 +41,30 @@
 </section>
 
 <script>
-    let count = 1
-    const ajouter = document.getElementById('ajouter')
+    let count = 1;
+    const ajouter = document.getElementById('ajouter');
+
     ajouter.addEventListener('click', function () {
-        // Récupérer le conteneur des ingrédients
-        const ingredients = document.getElementById('ingredients');
+        // Récupérer l'élément parent des ingrédients
+        const ingredientsContainer = document.getElementById('ingredients1').parentElement;
 
-        // Créer un nouveau paragraphe et un nouvel élément <select>
+        // Incrémenter le compteur pour le prochain ingrédient
         count++;
-        const p = document.createElement('p');
-        p.textContent = 'Ingrédients '+count + ' :';
 
+        // Créer un conteneur pour le nouvel ingrédient
+        const container = document.createElement('div');
+        container.id = `ingredients${count}`;
+
+        // Créer un paragraphe pour le libellé
+        const p = document.createElement('p');
+        p.textContent = `Ingrédients ${count} :`;
+
+        // Créer un élément select
         const s = document.createElement('select');
         s.name = "ingredient[]";
 
         // Copier les options existantes
-        const firstSelect = ingredients.querySelector('select');
+        const firstSelect = ingredientsContainer.querySelector('select');
         if (firstSelect) {
             firstSelect.querySelectorAll('option').forEach(option => {
                 const newOption = document.createElement('option');
@@ -63,10 +74,25 @@
             });
         }
 
-        // Ajouter le paragraphe et le select au conteneur
-        ingredients.appendChild(p);
-        ingredients.appendChild(s);
-    })
+        // Créer un bouton de suppression
+        const b = document.createElement('button');
+        b.type = "button";
+        b.style =  "color:red; margin-left : 5px";
+        b.textContent = "X";
+
+        // Ajouter l'événement de suppression
+        b.addEventListener('click', function () {
+            container.remove();
+        });
+
+        // Ajouter les éléments au conteneur
+        container.appendChild(p);
+        container.appendChild(s);
+        container.appendChild(b);
+
+        // Ajouter le conteneur au parent
+        ingredientsContainer.appendChild(container);
+    });
 </script>
 
 @include('footer')
