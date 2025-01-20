@@ -36,7 +36,7 @@
             <div class="bg-main-900 text-center p-8 rounded-lg shadow-2xl">
                 <i class="fa fa-utensils text-4xl text-main-500 mb-4"></i>
                 <h3 class="text-xl font-semibold mb-4">Des recettes larges</h3>
-                <p class="text-gray-200">Accédez à une base de données riche et pour tous les goûts.</p>
+                <p class="text-grayv-200">Accédez à une base de données riche et pour tous les goûts.</p>
             </div>
             <div class="bg-main-900 text-center p-8 rounded-lg shadow-2xl">
                 <i class="fa fa-carrot text-4xl text-main-500 mb-4"></i>

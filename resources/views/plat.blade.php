@@ -35,7 +35,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 w-11/12">
                     @foreach($plat->ingredients as $ingredient)
                         <div class="max-w-7xl lmcborder flex flex-col rounded-xl items-center overflow-hidden shadow-xl">
-                            <div class="bg-main-650 w-full py-3 px-5">
+                            <div class="bg-main-650 w-full py-3 px-4">
                                 <p class="text-2xl font-semibold amiri">{{ $ingredient->nom }}</p>
                             </div>
                             @if($ingredient->image)
