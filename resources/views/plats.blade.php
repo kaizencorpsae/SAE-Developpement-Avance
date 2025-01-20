@@ -23,20 +23,12 @@
                             <img src="/images/unknownimage.png" alt="unknown" class="w-full h-64 object-cover rounded-lg mb-4">
                         @endif
                     </a>
-                    <h2 class="text-xl font-semibold mt-4">Ingrédients :</h2>
-                    <ul class="list-disc list-inside text-white">
-                        @forelse ($plat->ingredients as $ingredient)
-                            <li>{{ $ingredient->nom }}</li>
-                        @empty
-                            <li>Aucun ingrédient.</li>
-                        @endforelse
-                    </ul>
+                    <a href="{{route('plats.edit', $plat->id)}}">Modifier</a>
                     <form action="{{ route("plats.destroy", $plat->id) }}" method="post">
                         @csrf
                         @method("delete")
                         <input type="submit" value="supprimer">
                     </form>
-                    <a href="{{route('plats.edit', $plat->id)}}">Modifier</a>
                 </div>
             @endforeach
         </div>

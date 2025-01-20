@@ -27,14 +27,6 @@
                             <p class="text-grey-600">Aucune image disponible</p>
                         @endif
                     </a>
-                    <h2 class="text-xl font-semibold mt-4">Ingrédients :</h2>
-                    <ul class="list-disc list-inside text-white">
-                        @forelse ($plat->ingredients as $ingredient)
-                            <li>{{ $ingredient->nom }}</li>
-                        @empty
-                            <li>Aucun ingrédient disponible.</li>
-                        @endforelse
-                    </ul>
                 </div>
             @endforeach
         @endif
