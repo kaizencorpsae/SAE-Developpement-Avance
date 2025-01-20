@@ -20,7 +20,6 @@ class IngredientFactory extends Factory
      */
     public function definition(): array
     {
-        $idimage = DB::table('images')->max('id');
         return [
             'nom' => $this->faker->randomElement([
                 'Tomate', 'Poulet', 'Salade', 'Poivron', 'Carotte'
