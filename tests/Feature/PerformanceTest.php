@@ -45,10 +45,7 @@ class PerformanceTest extends TestCase
         // On considère que les ingrédients sont déja créés, car l'utilisateur est censé choisir dans une liste d'ingrédients
         // Par la suite, on pourrait considérer qu'il peut créer des ingrédients en meme temps que le plat
         for ($i=1; $i <= $count; $i++) {
-            $nbrandom = random_int(2,5);
-            Plat::factory()->count(1)->make();
-            Ingredient::factory()->count($nbrandom)->make();
-            Image::factory()->count($nbrandom+1)->make();
+            Plat::factory()->hasAttached(Ingredient::factory(random_int(2,5)))->create();
         }
 
         $endTime = microtime(true);
