@@ -19,7 +19,7 @@ class Plat extends Model
     {
         return $this->belongsToMany(
             Ingredient::class,
-            'plat_Ingredient',
+            'plat_ingredient',
             'plat_id',
             'ingredient_id'
         );

@@ -13,7 +13,7 @@ class PlatDataSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('Plats')->insert([
+        DB::table('plats')->insert([
             [
                 'nom' => 'Pizza saumon',
                 'description' => 'Pizza avec du saumon',

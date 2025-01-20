@@ -10,7 +10,7 @@ class Ingredient extends Model
 
     protected $fillable = ['nom', 'image_id'];
 
-    public $timestamps = false; 
+    public $timestamps = false;
 
     public function image()
     {
@@ -21,7 +21,7 @@ class Ingredient extends Model
     {
         return $this->belongsToMany(
             Plat::class,
-            'plat_Ingredient',
+            'plat_ingredient',
             'ingredient_id',
             'plat_id'
         );

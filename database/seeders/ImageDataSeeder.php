@@ -15,7 +15,7 @@ class ImageDataSeeder extends Seeder
     {
 
         // Images pour les plats
-        DB::table('Images')->insert([
+        DB::table('images')->insert([
             [
                 'id' => 1,
                 'url' => ('./images/unknownimage.png')
@@ -123,7 +123,7 @@ class ImageDataSeeder extends Seeder
         ]);
 
         // Images pour les ingrédients
-        DB::table('Images')->insert([
+        DB::table('images')->insert([
             [
                 'id' => 100,
                 'url' => ('https://www.bioalaune.com/img/article/10280-saumon.jpg')
