@@ -46,7 +46,7 @@
                 >
                 <button
                     type="submit"
-                    class="inputmain text-white py-2 px-5 rounded-lg"
+                    class="inputmain text-white py-2 px-4 rounded-lg"
                 >
                     <i class="fa-light fa-magnifying-glass text-gray-200"></i>
                 </button>

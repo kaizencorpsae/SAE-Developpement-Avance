@@ -13,7 +13,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($plats as $plat)
                 <div class="bg-main-600 p-6 rounded-lg shadow-lg">
-                    <a class="platehover" href="{{ route('plats.show', $plat->id) }}">
+                    <a class="" href="{{ route('plats.show', $plat->id) }}">
                         <h2 class="text-2xl font-bold mb-2">{{ $plat->nom }}</h2>
                         <p class="text-main-600 mb-4">{{ $plat->description }}</p>
 
@@ -23,8 +23,8 @@
                             <img src="/images/unknownimage.png" alt="unknown" class="w-full h-64 object-cover rounded-lg mb-4">
                         @endif
                     </a>
-                    <a href="{{route('plats.edit', $plat->id)}}">Modifier</a>
-                    <form action="{{ route("plats.destroy", $plat->id) }}" method="post">
+                    <a class="crud" href="{{route('plats.edit', $plat->id)}}">Modifier</a>
+                    <form class="crud" action="{{ route("plats.destroy", $plat->id) }}" method="post">
                         @csrf
                         @method("delete")
                         <input type="submit" value="supprimer">
