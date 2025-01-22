@@ -89,7 +89,7 @@
                         </div>
                         <div class="flex justify-around">
                             <div class="force">
-                                <p>Intelligence Artificielle</p>
+                                <p>Php</p>
                                 <p>Full-stack</p>
                                 <p>Autodidacte</p>
                             </div>

@@ -36,5 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Routes pour créer un administrateur 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::post('/register', [RegisteredUserController::class, 'store']);
+});
+
 // Inclusion des routes d'authentification
 require __DIR__.'/auth.php';

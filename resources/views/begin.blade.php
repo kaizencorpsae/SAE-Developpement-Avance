@@ -51,6 +51,26 @@
                     <i class="fa-light fa-magnifying-glass text-gray-200"></i>
                 </button>
             </form>
+
+            @auth
+            @if(auth()->user()-> is_admin)  <!-- Afficher les boutons si l'utilisateur est administrateur -->
+                <div class="flex space-x-5 items-center">
+                    <a href="{{route('profile.edit')}}">
+                        <!-- Icône pour le profil et-->   
+                        <i class="fa-light fa-user text-gray-200 text-3xl" title="Profil"></i>
+                    </a>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <!-- Icône de déconnexion -->
+                        <i class="fa-light fa-right-from-bracket text-gray-200 text-3xl  cursor-pointer"
+                        title="Se déconnecter"
+                        onclick="this.closest('form').submit();"></i>
+                    </form>
+                  
+                </div>
+            @endif
+            @endauth
         </div>
     </div>
 </header>

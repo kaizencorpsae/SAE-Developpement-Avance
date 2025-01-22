@@ -13,12 +13,12 @@ class AdminMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         // Vérifie si l'utilisateur est connecté et s'il est admin
-        if (Auth::check() && Auth::user()->isAdmin()) {
+        if (Auth::check() && Auth::user()->is_admin) {
             return $next($request);
-    }
+        }
 
         // Redirige si l'utilisateur n'est pas admin
         return redirect('/')->with('error', 'Accès non autorisé.');
