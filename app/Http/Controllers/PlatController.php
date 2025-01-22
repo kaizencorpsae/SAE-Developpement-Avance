@@ -28,9 +28,9 @@ class PlatController extends Controller
                 ->orWhereHas('ingredients', function ($q) use ($query) {
                     $q->where('nom', 'LIKE', "%{$query}%");
                 })
-                ->get();
+                ->paginate(9);
         } else {
-            $plats = Plat::with(['image', 'ingredients'])->get();
+            $plats = Plat::with(['image', 'ingredients'])->paginate(9);
         }
 
         return view('search', compact('plats', 'query'));

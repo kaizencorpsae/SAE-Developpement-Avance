@@ -27,10 +27,29 @@
                             <p class="text-grey-600">Aucune image disponible</p>
                         @endif
                     </a>
+                    <!-- Boutons modifier et supprimer -->
+                    @auth
+                        @if(auth()->user()-> is_admin)  <!-- Afficher les boutons si l'utilisateur est administrateur -->
+                        <div class="flex justify-center space-x-4 mt-4">
+                            <a href="{{ route('plats.edit', $plat->id) }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Modifier</a>
+                            <form action="{{ route('plats.destroy', $plat->id) }}" method="post" class="inline">
+                                @csrf
+                                @method("delete")
+                                <input
+                                    type="submit"
+                                    value="Supprimer"
+                                    class="px-4 py-2 bg-red-400 text-white rounded hover:bg-red-600 cursor-pointer">
+                            </form>
+                        </div>
+                        @endif
+                    @endauth
                 </div>
             @endforeach
         @endif
     </div>
+</div>
+<div class="d-flex flex justify-center mb-5">
+    {{ $plats->links() }}
 </div>
 
 @include('footer')
