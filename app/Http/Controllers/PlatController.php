@@ -62,6 +62,7 @@ class PlatController extends Controller
 
     public function store(Request $request){
 
+        // Image
         $image = new Image();
 
         $file = $request->file('image');
@@ -84,11 +85,13 @@ class PlatController extends Controller
         $plat->description = $request->input('description');
         $plat->image_id = $id_image;
 
-        $preparation = $request->input('preparation');
-        $plat->preparation = $preparation ?? '"Pas de préparation"';
+        // Préparation
+        $preparation = implode("\n", $request->input('preparation'));
+        $plat->preparation = $preparation;
 
         $plat->save();
 
+        // Ingrédients
         $ingredients = $request->input('ingredient');
         foreach ($ingredients as $ingredient) {
             $plat_ingredient = new Plat_ingredient();
@@ -106,7 +109,7 @@ class PlatController extends Controller
         $plat = Plat::find($id);
 
         if(!$plat) {
-            return redirect()->route('plats.index')->with('status', 'Le plat est introuvable');;
+            return redirect()->route('plats.index')->with('status', 'Le plat est introuvable');
         }
 
         $plat->delete();
@@ -122,7 +125,9 @@ class PlatController extends Controller
         }
 
         return view('plat.edit', [
-            'plat' => $plat
+            'plat' => $plat,
+            'ingredients' => Ingredient::all(),
+            'image' => Image::find($plat->image_id),
         ]);
     }
 
@@ -133,12 +138,51 @@ class PlatController extends Controller
         $plat->nom = $request->input('nom');
         $plat->description = $request->input('description');
 
-        $plat->image_id = $request->input('image_id');
-
+        // Préparation
         $preparation = implode("\n", $request->input('preparation'));
         $plat->preparation = $preparation;
 
+
+        // Image
+        $file = $request->file('image');
+
+        if ($file) {
+            $image = new Image();
+            $path = $file->store('images/plats', 'public');
+
+            $image->url = Storage::url($path);
+
+            $image->save();
+
+            $id_image = $image->id;
+        }else{
+            $id_image = $plat->image_id;
+        }
+
+        $plat->image_id = $id_image;
+
         $plat->update();
+
+        // Ingrédients
+        $ingredients = $request->input('ingredient');
+
+        $currentIngredients = $plat->ingredients->pluck('id')->toArray();
+
+        $ingredientsToAdd = array_diff($ingredients, $currentIngredients);
+
+        $ingredientsToRemove = array_diff($currentIngredients, $ingredients);
+
+        foreach ($ingredientsToAdd as $ingredient) {
+            $plat_ingredient = new Plat_ingredient();
+            $plat_ingredient->plat_id = $plat->id;
+            $plat_ingredient->ingredient_id = $ingredient;
+            $plat_ingredient->save();
+        }
+
+        Plat_ingredient::where('plat_id', $plat->id)
+            ->whereIn('ingredient_id', $ingredientsToRemove)
+            ->delete();
+
 
         return redirect()->route('plats.show', $id);
     }

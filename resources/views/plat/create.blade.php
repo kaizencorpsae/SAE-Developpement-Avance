@@ -15,6 +15,8 @@
                     <input type="text" id="description" name="description" placeholder="Ex : pizza avec du saumon" required>
                 </div>
 
+                <p>Ajouter une image :</p>
+
                 <input type="file" name="image">
 
                 <div class="space-y-4">

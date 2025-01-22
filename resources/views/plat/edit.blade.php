@@ -16,6 +16,8 @@
                     <input type="text" id="description" name="description" value="{{$plat->description}}" required>
                 </div>
 
+                <p>Modifier l'image :</p>
+
                 @if(str_contains($image->url, '/storage/public/images'))
                     <img src="{{ asset($image->url) }}" alt="Image">
                 @else
