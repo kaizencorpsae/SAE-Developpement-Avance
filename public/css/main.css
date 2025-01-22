@@ -207,11 +207,10 @@ footer {
     justify-content: center;
 
     input[type="text"],
-    input[type="submit"],
     textarea,
     select{
         padding: .5rem;
-        /*background-color: #47413d;*/
+        background-color: #47413d;
         margin-bottom: 10px;
     }
 }

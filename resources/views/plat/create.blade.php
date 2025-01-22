@@ -1,7 +1,5 @@
 @include('begin')
 
-@vite(['resources/js/app.js'])
-
 <section id="crud" class="flex justify-center ptheader">
     <div class="bg-main-750 w-3/5 lmcborder flex flex-col rounded-xl items-center overflow-hidden mt-8 mb-20 shadow-xl">
         <div class="bg-main-700 w-full text-center py-6">
@@ -48,5 +46,7 @@
         </div>
     </div>
 </section>
+
+<script src="{{ asset('js/crud.js') }}"></script>
 
 @include('footer')
