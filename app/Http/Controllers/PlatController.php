@@ -109,11 +109,22 @@ class PlatController extends Controller
     }
 
     //Exemples dans le Controller :
-    public function create(){
+    public function create() 
+    {
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès refusé : vous n\'êtes pas autorisé.');
+        }
+
         return view('plat.create', ['ingredients' => Ingredient::all()]);
     }
 
     public function store(Request $request){
+
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès refusé : vous n\'êtes pas autorisé.');
+        }
 
         // Image
         $image = new Image();
@@ -159,6 +170,11 @@ class PlatController extends Controller
     }
 
     public function destroy($id){
+
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès non autorisé.');
+        }
         $plat = Plat::find($id);
 
         if(!$plat) {
@@ -171,6 +187,11 @@ class PlatController extends Controller
     }
 
     public function edit($id){
+
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès non autorisé.');
+        }
         $plat = Plat::find($id);
 
         if(!$plat) {
@@ -185,6 +206,12 @@ class PlatController extends Controller
     }
 
     public function update(Request $request, $id){
+
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès non autorisé.');
+        }
+
         $plat = Plat::find($id);
 
         $plat->nom = $request->input('nom');

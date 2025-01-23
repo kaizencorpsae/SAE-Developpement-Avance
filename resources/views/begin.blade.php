@@ -55,6 +55,8 @@
             @auth
             @if(auth()->user()-> is_admin)  <!-- Afficher les boutons si l'utilisateur est administrateur -->
                 <div class="flex space-x-5 items-center">
+                    <a href="{{ route('plats.create') }}" class="px-4 py-2 crud">Ajouter un plat</a>
+
                     <a href="{{route('profile.edit')}}">
                         <!-- Icône pour le profil et-->   
                         <i class="fa-light fa-user text-gray-200 text-3xl" title="Profil"></i>

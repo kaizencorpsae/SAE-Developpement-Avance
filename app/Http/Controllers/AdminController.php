@@ -36,7 +36,7 @@ class AdminController extends Controller
             // Auth::attempt va vérifier automatiquement que le mot de passe haché est correct
             $request->session()->regenerate();
 
-            return redirect()->intended('/'); // Redirige vers la page souhaitée
+            return redirect()->intended('/'); 
         }
 
         // Si les informations ne sont pas correctes

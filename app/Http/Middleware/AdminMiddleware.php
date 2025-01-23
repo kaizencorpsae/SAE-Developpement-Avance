@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
@@ -21,13 +22,13 @@ class AdminMiddleware
         }
 
         // Redirige si l'utilisateur n'est pas admin
-        return redirect('/')->with('error', 'Accès non autorisé.');
+        return redirect()->route('plats.index')->with('error', 'Accès non autorisé.');
     }
 
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            return route('login');
+            return route('/plats.index');
         }
     }
 
