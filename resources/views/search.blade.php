@@ -6,8 +6,8 @@
     <h1 class="text-3xl font-semibold">Recherchez votre plat ou ingrédient :</h1>
 </header>
 
-<div id="selecteur" class="crud flex justify-center">
-    <input type="text" placeholder="Chercher un plat">
+<div id="selecteur" class="crud flex justify-center relative mx-auto px-6 py-15" style="max-width: 50rem;">
+    <input type="text" placeholder="Chercher un plat" class="p-3 rounded-lg bg-main-700 text-white flex-1">
 </div>
 
 <div style="display: flex; justify-content: center">

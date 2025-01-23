@@ -30,21 +30,9 @@ class PlatController extends Controller
     public function selecteur(Request $request){
         $query = $request->input('query');
 
+        $plats = $this->getPlats($query);
 
-        $list_plats = collect();
-
-        if(str_contains($query, ' ')){
-            $list_query = explode(" ", $query);
-            foreach ($list_query as $word) {
-                $list_plats = $list_plats->merge($this->getPlats($word));
-            }
-        }else{
-            $list_plats = $this->getPlats($query);
-        }
-
-        $list_plats = $list_plats->unique('id');
-
-        $platsHtml = $list_plats->map(function($plat) {
+        $platsHtml = $plats->map(function($plat) {
             return $this->html_plat($plat);
         });
 
@@ -61,7 +49,7 @@ class PlatController extends Controller
             ->where('nom', 'LIKE', "%{$query}%")
             ->orWhereHas('ingredients', function ($q) use ($query) {
                 $q->where('nom', 'LIKE', "%{$query}%");
-            })->get();
+            })->take(30)->get();
     }
 
     public function html_plat($plat)
@@ -109,7 +97,7 @@ class PlatController extends Controller
     }
 
     //Exemples dans le Controller :
-    public function create() 
+    public function create()
     {
         // Vérifie si l'utilisateur est admin
         if (!auth()->user()->is_admin) {
