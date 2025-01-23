@@ -7,6 +7,7 @@ use App\Models\Plat_Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plat;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use function PHPUnit\Framework\isEmpty;
@@ -29,15 +30,26 @@ class PlatController extends Controller
     public function selecteur(Request $request){
         $query = $request->input('query');
 
-        $plats = $this->getPlats($query);
 
-        $platHtml = $plats->map(function($plat) {
+        $list_plats = collect();
+
+        if(str_contains($query, ' ')){
+            $list_query = explode(" ", $query);
+            foreach ($list_query as $word) {
+                $list_plats = $list_plats->merge($this->getPlats($word));
+            }
+        }else{
+            $list_plats = $this->getPlats($query);
+        }
+
+        $list_plats = $list_plats->unique('id');
+
+        $platsHtml = $list_plats->map(function($plat) {
             return $this->html_plat($plat);
         });
 
-
         $json = [
-            'plats' => $platHtml
+            'plats' => $platsHtml
         ];
 
         return response()->json($json);
@@ -97,11 +109,22 @@ class PlatController extends Controller
     }
 
     //Exemples dans le Controller :
-    public function create(){
+    public function create() 
+    {
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès refusé : vous n\'êtes pas autorisé.');
+        }
+
         return view('plat.create', ['ingredients' => Ingredient::all()]);
     }
 
     public function store(Request $request){
+
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès refusé : vous n\'êtes pas autorisé.');
+        }
 
         // Image
         $image = new Image();
@@ -147,6 +170,11 @@ class PlatController extends Controller
     }
 
     public function destroy($id){
+
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès non autorisé.');
+        }
         $plat = Plat::find($id);
 
         if(!$plat) {
@@ -159,6 +187,11 @@ class PlatController extends Controller
     }
 
     public function edit($id){
+
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès non autorisé.');
+        }
         $plat = Plat::find($id);
 
         if(!$plat) {
@@ -174,6 +207,11 @@ class PlatController extends Controller
 
     public function update(Request $request, $id){
 
+        // Vérifie si l'utilisateur est admin
+        if (!auth()->user()->is_admin) {
+            return redirect()->route('plats.index')->with('error', 'Accès non autorisé.');
+        }
+
         $plat = Plat::find($id);
 
         $plat->nom = $request->input('nom');
@@ -186,31 +224,31 @@ class PlatController extends Controller
 
         // Image
         $file = $request->file('image');
-
+        $url = $request->input('image_web');
         if ($file) {
+            // Sauvegarder la nouvelle image
             $image = new Image();
             $path = $file->store('images/plats', 'public');
-
             $image->url = Storage::url($path);
-
-            $image->save();
-
-            $id_image = $image->id;
-        }else{
+            $id_image = $this->deleteOldImage($image, $plat);
+        }
+        elseif ($url){
+            // Sauvegarder la nouvelle image
+            $image = new Image();
+            $image->url = $url;
+            $id_image = $this->deleteOldImage($image, $plat);
+        }
+        else {
             $id_image = $plat->image_id;
         }
 
         $plat->image_id = $id_image;
-
-        $plat->update();
+        $plat->save();
 
         // Ingrédients
         $ingredients = $request->input('ingredient');
-
         $currentIngredients = $plat->ingredients->pluck('id')->toArray();
-
         $ingredientsToAdd = array_diff($ingredients, $currentIngredients);
-
         $ingredientsToRemove = array_diff($currentIngredients, $ingredients);
 
         foreach ($ingredientsToAdd as $ingredient) {
@@ -224,8 +262,38 @@ class PlatController extends Controller
             ->whereIn('ingredient_id', $ingredientsToRemove)
             ->delete();
 
-
         return redirect()->route('plats.show', $id);
     }
+
+    /**
+     * @param Image $image
+     * @param $plat
+     * @return mixed
+     */
+    public function deleteOldImage(Image $image, $plat): mixed
+    {
+        $image->save();
+
+        $id_image = $image->id;
+
+        // Mettre à jour le plat avec le nouveau image_id
+        $oldImageId = $plat->image_id;
+        $plat->image_id = $id_image;
+        $plat->save();
+
+        // Supprimer l'ancienne image après avoir mis à jour le plat
+        if ($oldImageId) {
+            $oldImage = Image::find($oldImageId);
+            if ($oldImage) {
+                // Supprimer le préfixe /storage/ du chemin de l'image
+                $relativePath = str_replace('/storage/', '', $oldImage->url);
+                Log::info('Suppression de l\'ancienne image: ' . $relativePath);
+                Storage::disk('public')->delete($relativePath);
+                $oldImage->delete();
+            }
+        }
+        return $id_image;
+    }
+
 
 }

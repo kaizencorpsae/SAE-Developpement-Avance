@@ -15,10 +15,21 @@
                 <img src="{{ $image->url }}" class="w-full h-80 object-cover" alt="Image">
             @endif
 
-                <label for="image">
-                    <input type="file" id="image">
+            <div class="ml-5 m-2 flex justify-center">
+                <div class="pr-3" style="border-right:solid 2px #978e89;">
+                    <span>Sélectionnez un fichier en local :</span>
+                    <label for="image">
+                        <input type="file" id="image" name="image">
+                    </label>
+                </div>
+                <div class="ml-3">
+                    <span>Ou via une url :</span>
+                    <input type="text" name="image_web" id="image" placeholder="Url de l'image">
                     <input type="hidden" name="image_id" value="{{$image->id}}">
-                </label>
+                </div>
+
+            </div>
+
         </div>
 
         <div class="w-3/4 py-16 flex flex-col space-between">
@@ -60,7 +71,7 @@
                                 <img
                                     src="{{ $ingredient_plat->image->url }}"
                                     class="w-full h-36 object-cover"
-                                    alt=" ">
+                                    alt=" ">
                             @else
                                 <img src="{{ asset('/images/unknownimage.png') }}" class="w-full h-40 object-cover rounded-3xl mb-4" alt="">
                             @endif
@@ -81,15 +92,15 @@
                 <ul class="text-xl list-none">
                     @foreach (explode("\n", $plat->preparation) as $index => $step)
                         @if (trim($step) !== '')
-                        <li class="mb-4">
-                            <p class="name text-main-grey alata my-2">— ÉTAPE {{$index+1}} :</p>
-                            <div class="flex gap-2">
-                                <input class="text-lg w-full" type="text" name="preparation[{{$index}}]" value="{{ trim($step) }}">
-                                @if($index != 0)
-                                    <button class="remove text-3xl" type="button" style="color:#ff876c; margin-left : 5px">×</button>
-                                @endif
-                            </div>
-                        </li>
+                            <li class="mb-4">
+                                <p class="name text-main-grey alata my-2">— ÉTAPE {{$index+1}} :</p>
+                                <div class="flex gap-2">
+                                    <input class="text-lg w-full" type="text" name="preparation[{{$index}}]" value="{{ trim($step) }}">
+                                    @if($index != 0)
+                                        <button class="remove text-3xl" type="button" style="color:#ff876c; margin-left : 5px">×</button>
+                                    @endif
+                                </div>
+                            </li>
                         @endif
 
                     @endforeach

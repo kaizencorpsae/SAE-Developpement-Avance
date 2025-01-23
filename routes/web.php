@@ -14,7 +14,12 @@ Route::get('/search', [PlatController::class, 'search'])->name('search');
 
 Route::get('/selecteur', [PlatController::class, 'selecteur']);
 
-Route::resource('plats', PlatController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('plats', PlatController::class)->except(['index', 'show']);
+});
+
+Route::resource('plats', PlatController::class)->only(['index', 'show']);
+
 
 // Routes pour le tableau de bord en tant qu'administrateur
 Route::get('/dashboard', function () {
