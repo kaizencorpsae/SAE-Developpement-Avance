@@ -7,6 +7,7 @@ use App\Models\Plat_Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plat;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use function PHPUnit\Framework\isEmpty;
@@ -184,7 +185,6 @@ class PlatController extends Controller
     }
 
     public function update(Request $request, $id){
-
         $plat = Plat::find($id);
 
         $plat->nom = $request->input('nom');
@@ -197,31 +197,31 @@ class PlatController extends Controller
 
         // Image
         $file = $request->file('image');
-
+        $url = $request->input('image_web');
         if ($file) {
+            // Sauvegarder la nouvelle image
             $image = new Image();
             $path = $file->store('images/plats', 'public');
-
             $image->url = Storage::url($path);
-
-            $image->save();
-
-            $id_image = $image->id;
-        }else{
+            $id_image = $this->deleteOldImage($image, $plat);
+        }
+        elseif ($url){
+            // Sauvegarder la nouvelle image
+            $image = new Image();
+            $image->url = $url;
+            $id_image = $this->deleteOldImage($image, $plat);
+        }
+        else {
             $id_image = $plat->image_id;
         }
 
         $plat->image_id = $id_image;
-
-        $plat->update();
+        $plat->save();
 
         // Ingrédients
         $ingredients = $request->input('ingredient');
-
         $currentIngredients = $plat->ingredients->pluck('id')->toArray();
-
         $ingredientsToAdd = array_diff($ingredients, $currentIngredients);
-
         $ingredientsToRemove = array_diff($currentIngredients, $ingredients);
 
         foreach ($ingredientsToAdd as $ingredient) {
@@ -235,8 +235,38 @@ class PlatController extends Controller
             ->whereIn('ingredient_id', $ingredientsToRemove)
             ->delete();
 
-
         return redirect()->route('plats.show', $id);
     }
+
+    /**
+     * @param Image $image
+     * @param $plat
+     * @return mixed
+     */
+    public function deleteOldImage(Image $image, $plat): mixed
+    {
+        $image->save();
+
+        $id_image = $image->id;
+
+        // Mettre à jour le plat avec le nouveau image_id
+        $oldImageId = $plat->image_id;
+        $plat->image_id = $id_image;
+        $plat->save();
+
+        // Supprimer l'ancienne image après avoir mis à jour le plat
+        if ($oldImageId) {
+            $oldImage = Image::find($oldImageId);
+            if ($oldImage) {
+                // Supprimer le préfixe /storage/ du chemin de l'image
+                $relativePath = str_replace('/storage/', '', $oldImage->url);
+                Log::info('Suppression de l\'ancienne image: ' . $relativePath);
+                Storage::disk('public')->delete($relativePath);
+                $oldImage->delete();
+            }
+        }
+        return $id_image;
+    }
+
 
 }
