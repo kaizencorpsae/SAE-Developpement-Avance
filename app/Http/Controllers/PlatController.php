@@ -29,15 +29,26 @@ class PlatController extends Controller
     public function selecteur(Request $request){
         $query = $request->input('query');
 
-        $plats = $this->getPlats($query);
 
-        $platHtml = $plats->map(function($plat) {
+        $list_plats = collect();
+
+        if(str_contains($query, ' ')){
+            $list_query = explode(" ", $query);
+            foreach ($list_query as $word) {
+                $list_plats = $list_plats->merge($this->getPlats($word));
+            }
+        }else{
+            $list_plats = $this->getPlats($query);
+        }
+
+        $list_plats = $list_plats->unique('id');
+
+        $platsHtml = $list_plats->map(function($plat) {
             return $this->html_plat($plat);
         });
 
-
         $json = [
-            'plats' => $platHtml
+            'plats' => $platsHtml
         ];
 
         return response()->json($json);
