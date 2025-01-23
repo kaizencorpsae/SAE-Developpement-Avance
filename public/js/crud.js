@@ -49,17 +49,18 @@ add_ingredient.addEventListener('click', function () {
     ingredientsContainer.appendChild(container);
 });
 
-const ul = document.getElementById('preparation')
+let divprepa = document.querySelector('#preparation');
+let ulprepa = divprepa.querySelector('ul');
+let count_prepa = ulprepa.childElementCount +1;
 
-let count_prepa = ul.childElementCount
-const add_preparation = document.getElementById('add_preparation')
+const add_preparation = document.getElementById('add_preparation');
 add_preparation.addEventListener('click', function () {
 
     let li = document.createElement('li')
 
     let p = document.createElement('p')
-    p.classList = ul.querySelector('.name').classList
-    p.textContent = "Etape " + count_prepa + " :"
+    p.classList = ulprepa.querySelector('.name').classList;
+    p.textContent = "— ÉTAPE " + count_prepa + " :"
 
     let input = document.createElement('input')
     input.type = "text"
@@ -77,7 +78,7 @@ add_preparation.addEventListener('click', function () {
 
     createButtonRemove(li)
 
-    ul.append(li)
+    ulprepa.append(li)
 
     count_prepa ++;
 })
@@ -85,8 +86,8 @@ add_preparation.addEventListener('click', function () {
 function createButtonRemove() {
     const b = document.createElement('button');
     b.type = "button";
-    b.style =  "color:red; margin-left : 5px";
-    b.textContent = "X";
+    b.style =  "color:#ff876c; margin-left : 5px";
+    b.textContent = "×";
 
     return b
 }

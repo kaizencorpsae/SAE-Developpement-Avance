@@ -24,7 +24,7 @@
                         @endif
                     </a>
 
-                    <!-- Boutons modifier et supprimer --> 
+                    <!-- Boutons modifier et supprimer -->
                     @auth
                         @if(auth()->user()-> is_admin)  <!-- Afficher les boutons si l'utilisateur est administrateur -->
                         <div class="flex justify-center space-x-4 mt-4">
@@ -32,9 +32,9 @@
                             <form action="{{ route('plats.destroy', $plat->id) }}" method="post" class="inline">
                                 @csrf
                                 @method("delete")
-                                <input 
-                                    type="submit" 
-                                    value="Supprimer" 
+                                <input
+                                    type="submit"
+                                    value="Supprimer"
                                     class="px-3 py-2 mt-2 bg-red-400 text-white rounded hover:bg-red-600 cursor-pointer">
                             </form>
                         </div>

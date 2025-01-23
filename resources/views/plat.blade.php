@@ -12,7 +12,7 @@
                 alt="{{ $plat->nom }}"
             >
         </div>
-        <div class="w-3/4 py-16 flex flex-col space-between ">
+        <div class="w-3/4 py-16 flex flex-col space-between">
             <div id="description" class="w-full">
                 <div class="flex flex-row gap-8 justify-between w-full mb-4">
                     <h4 class="text-3xl font-semibold mb-4 flex items-center">
