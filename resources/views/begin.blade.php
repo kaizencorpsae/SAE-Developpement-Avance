@@ -54,21 +54,20 @@
 
             @auth
             @if(auth()->user()-> is_admin)  <!-- Afficher les boutons si l'utilisateur est administrateur -->
-                <div class="flex space-x-5 items-center">
-                    <a href="{{route('profile.edit')}}">
-                        <!-- Icône pour le profil et-->   
+                <div class="flex space-x-5 items-center h-full">
+                    <a class="h-full flex items-center" href="{{route('profile.edit')}}">
+                        <!-- Icône pour le profil et-->
                         <i class="fa-light fa-user text-gray-200 text-3xl" title="Profil"></i>
                     </a>
-
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <!-- Icône de déconnexion -->
-                        <i class="fa-light fa-right-from-bracket text-gray-200 text-3xl  cursor-pointer"
-                        title="Se déconnecter"
-                        onclick="this.closest('form').submit();"></i>
-                    </form>
-                  
                 </div>
+                <form class="flex items-center h-full formheaderlmc" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <!-- Icône de déconnexion -->
+                    <i class="fa-light fa-right-from-bracket text-gray-200 text-3xl cursor-pointer"
+                       title="Se déconnecter"
+                       onclick="this.closest('form').submit();"></i>
+                </form>
+
             @endif
             @endauth
         </div>

@@ -75,6 +75,21 @@ html {
         border-bottom: solid 3px rgb(202, 189, 181);
     }
 }
+.inputmain2 {
+    outline: none !important;
+    background-color: #47413d;
+    border-bottom: solid 3px var(--main-color);
+    padding: 0.5em;
+    transition: 0.5s;
+    &:hover{
+        background-color: #6b615b !important;
+        border-bottom: solid 3px rgba(202, 189, 181, 0.5) !important;
+    }
+    &:focus {
+        background-color: #3d3835 !important;
+        border-bottom: solid 3px rgba(202, 189, 181, 0.5) !important;
+    }
+}
 
 .mainbtn {
     transition: 0.3s;
@@ -86,16 +101,68 @@ html {
         background-color: rgba(255, 255, 255, 0.1);
     }
 }
-/*c'est un a qui est crud*/
 
-.crud input,a.crud{
+.divbtn>button{
+    padding: 1em 2em !important;
+    margin: 1em 0 0 !important;
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.2) !important;
+    }
+}
+.divbtnred>button{
+    background-color: #ce5b47 !important;
+    &:hover{
+        background-color: #d5715f !important;
+    }
+}
+.crud input,a.crud,.lmcinput,.divbtn>button{
     background-color: rgba(255, 255, 255, 0.1);
+    border: none !important;
     transition: 0.5s;
     padding: 0.5em;
     margin: 0.5em;
-    border-radius: 10px;
     &:hover{
         background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+.lmcinputred{
+    transition: 0.5s;
+    padding: 0.5em;
+    margin: 0.5em;
+    background-color: #ce5b47;
+    &:hover{
+        background-color: #d5715f;
+    }
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    color: white;
+    .page-link {
+        padding: 0.5rem 1rem;
+        margin: 0;
+        border: 1px solid transparent;
+        background-color: #6b615b;
+        color: white;
+        text-decoration: none;
+    }
+    .page-link:hover {
+        background-color: #978e89;
+        color: white;
+        border-color: transparent;
+    }
+    .active .page-link {
+        background-color: #817a75;
+        border-color: var(--main-color);
+    }
+    .disabled .page-link {
+        background-color: #544d49;
+        color: var(--main-color);
+        border-color: transparent;
     }
 }
 
@@ -163,14 +230,13 @@ html {
 }
 
 .linkheader {
-    a {
+    a,.formheaderlmc {
         position: relative;
         text-decoration: none;
     }
     height: 100%;
 }
-
-.linkheader a:after {
+.linkheader a:after,.formheaderlmc:after {
     content: '';
     position: absolute;
     background-color: var(--main-light-color);
@@ -181,8 +247,7 @@ html {
     opacity: 0;
     transition: 0.3s;
 }
-
-.linkheader a:hover:after {
+.linkheader a:hover:after,.formheaderlmc:hover:after {
     opacity: 1;
     transition: 0.3s;
 }
@@ -191,14 +256,14 @@ input::placeholder, textarea::placeholder {
     color: var(--main-color) !important;
 }
 
-input[type="text"],
-input[type="password"]{
+input[type="text"]:not(.inputmain2),
+input[type="password"]:not(.inputmain2){
     transition: 0.5s;
     border-bottom: solid 3px var(--main-color);
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="text"]:focus:not(.inputmain2),
+input[type="password"]:focus:not(.inputmain2) {
     outline: none;
     box-shadow: 0 0 5px #ffffff;
     z-index: 3;
