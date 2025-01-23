@@ -3,53 +3,75 @@
 <body class="bg-main-800 text-white">
 
 <header class="text-center py-6 pt-28">
-    <h1 class="text-3xl font-semibold">Résultats pour "{{ $query }}"</h1>
+    <h1 class="text-3xl font-semibold">Rechercher votre plat ou ingrédient :</h1>
 </header>
+
+<div id="selecteur" class="crud flex justify-center">
+    <input type="text" placeholder="Chercher un plat">
+</div>
+
+<div class="max-w-7xl mx-auto my-10 px-4">
+    <div id="box_plats" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    </div>
+</div>
+<div id="pagination" class="d-flex flex justify-center mb-5">
+
+</div>
+
+<script>
+    const selecteur = document.getElementById('selecteur')
+    selecteur.addEventListener('input', handlerSelector)
+
+    // Récupère le texte de la barre de recherche
+    function handlerSelector(event) {
+        const query = event.target.value.trim();
+        platSelector(query)
+    }
+
+    async function platSelector(query) {
+        try {
+            const response = await fetch(`/selecteur?query=${encodeURIComponent(query)}`);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            const plats = data.plats;
+            const resultContainer = document.getElementById('box_plats');
+
+            // Réinitialise les plats
+            resultContainer.innerHTML = '';
+
+            // Ajoute chaque plat dans le conteneur
+            plats.forEach(plat => {
+                resultContainer.insertAdjacentHTML('beforeend', plat);
+            });
+        } catch (error) {
+            console.error('Erreur lors de la sélection de plats:', error);
+        }
+    }
+</script>
+
+@if(isset($query))
+    <script>
+        platSelector("{{ $query }}");
+        const i = document.getElementById('selecteur').querySelector('input')
+        console.log(i)
+        i.value = "{{ $query }}";
+    </script>
+@else
+    <script>
+        platSelector('')
+    </script>
+@endif
+
+
 <div class="text-center mb-6">
     <a href="/" class="inputmain text-white py-2 px-4 rounded-lg">
         Retour à l'accueil
     </a>
-</div>
-
-<div class="max-w-7xl mx-auto my-10 px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        @if($plats->isEmpty())
-            <p class="text-main-700 text-center">Aucun résultat trouvé.</p>
-        @else
-            @foreach($plats as $plat)
-                <div class="bg-main-600 p-6 rounded-lg shadow-lg">
-                    <a class="platehover" href="{{route("plats.show",$plat->id)}}">
-                        <h2 class="text-2xl font-bold mb-2">{{ $plat->nom }}</h2>
-                        <p class="text-grey-600 mb-4">{{ $plat->description }}</p>
-                        @if($plat->image)
-                            <img src="{{ $plat->image->url }}" alt="{{ $plat->nom }}" class="w-full h-64 object-cover rounded-lg mb-4">
-                        @else
-                            <p class="text-grey-600">Aucune image disponible</p>
-                        @endif
-                    </a>
-                    <!-- Boutons modifier et supprimer -->
-                    @auth
-                        @if(auth()->user()-> is_admin)  <!-- Afficher les boutons si l'utilisateur est administrateur -->
-                        <div class="flex justify-center space-x-4 mt-4">
-                            <a href="{{ route('plats.edit', $plat->id) }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Modifier</a>
-                            <form action="{{ route('plats.destroy', $plat->id) }}" method="post" class="inline">
-                                @csrf
-                                @method("delete")
-                                <input
-                                    type="submit"
-                                    value="Supprimer"
-                                    class="px-4 py-2 bg-red-400 text-white rounded hover:bg-red-600 cursor-pointer">
-                            </form>
-                        </div>
-                        @endif
-                    @endauth
-                </div>
-            @endforeach
-        @endif
-    </div>
-</div>
-<div class="d-flex flex justify-center mb-5">
-    {{ $plats->links() }}
 </div>
 
 @include('footer')

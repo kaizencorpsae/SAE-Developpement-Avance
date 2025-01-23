@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plat;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 use function PHPUnit\Framework\isEmpty;
 
 class PlatController extends Controller
@@ -22,18 +23,58 @@ class PlatController extends Controller
     {
         $query = $request->input('query');
 
-        if ($query) {
-            $plats = Plat::with(['image', 'ingredients'])
-                ->where('nom', 'LIKE', "%{$query}%")
-                ->orWhereHas('ingredients', function ($q) use ($query) {
-                    $q->where('nom', 'LIKE', "%{$query}%");
-                })
-                ->paginate(9);
-        } else {
-            $plats = Plat::with(['image', 'ingredients'])->paginate(9);
-        }
+        return view('search', compact('query'));
+    }
 
-        return view('search', compact('plats', 'query'));
+    public function selecteur(Request $request){
+        $query = $request->input('query');
+
+        $plats = $this->getPlats($query);
+
+        $platHtml = $plats->map(function($plat) {
+            return $this->html_plat($plat);
+        });
+
+
+        $json = [
+            'plats' => $platHtml
+        ];
+
+        return response()->json($json);
+    }
+
+    public function getPlats($query)
+    {
+        return Plat::with(['image', 'ingredients'])
+            ->where('nom', 'LIKE', "%{$query}%")
+            ->orWhereHas('ingredients', function ($q) use ($query) {
+                $q->where('nom', 'LIKE', "%{$query}%");
+            })->get();
+    }
+
+    public function html_plat($plat)
+    {
+        return '
+    <div class="bg-main-600 p-6 rounded-lg shadow-lg">
+        <a class="platehover" href="' . route('plats.show', $plat->id) . '">
+            <h2 class="text-2xl font-bold mb-2">' . $plat->nom . '</h2>
+            <p class="text-grey-600 mb-4">' . $plat->description . '</p>
+            ' . ($plat->image ?
+                '<img src="' . $plat->image->url . '" alt="' . $plat->nom . '" class="w-full h-64 object-cover rounded-lg mb-4">' :
+                '<p class="text-grey-600">Aucune image disponible</p>') . '
+        </a>
+        <!-- Boutons modifier et supprimer -->
+        ' . (auth()->user() && auth()->user()->is_admin ? '
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="' . route('plats.edit', $plat->id) . '" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Modifier</a>
+                <form action="' . route('plats.destroy', $plat->id) . '" method="post" class="inline">
+                    ' . csrf_field() . '
+                    ' . method_field("delete") . '
+                    <input type="submit" value="Supprimer" class="px-4 py-2 bg-red-400 text-white rounded hover:bg-red-600 cursor-pointer">
+                </form>
+            </div>
+        ' : '') . '
+    </div>';
     }
 
 

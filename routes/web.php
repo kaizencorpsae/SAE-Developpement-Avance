@@ -12,17 +12,9 @@ Route::get('/about', [HomeController::class, 'about']);
 
 Route::get('/search', [PlatController::class, 'search'])->name('search');
 
+Route::get('/selecteur', [PlatController::class, 'selecteur']);
+
 Route::resource('plats', PlatController::class);
-/*
-"ressource" permet de créer plusieurs pages pour le CRUD
-- index = page de base du produit
-- create = page contenant le formulaire pour créer, fait suite à store
-- store (method post) = Fonction dans le Controller pour stocker les données
-- edit = page contenant le formulaire pour éditer, fait suite à update
-- update (method put) = Fonction dans le Controller pour modifier les données
-- destroy (method delete) = Fonction dans le Controller pour supprimer les données
-- show = page pour afficher des données
-*/
 
 // Routes pour le tableau de bord en tant qu'administrateur
 Route::get('/dashboard', function () {
@@ -36,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Routes pour créer un administrateur 
+// Routes pour créer un administrateur
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('/register', [RegisteredUserController::class, 'store']);
