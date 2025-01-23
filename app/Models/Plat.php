@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Plat extends Model
 {
+    use HasFactory;
+
     protected $table = 'plats';
     protected $fillable = ['nom', 'description', 'preparation', 'image_id'];
     public $timestamps = false;
+
 
     public function image()
     {
