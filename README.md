@@ -32,10 +32,12 @@ DB_DATABASE=db
 DB_USERNAME=user
 DB_PASSWORD=1234
 ```
-Ensuite, pour créer les tables et avoir les données par défault, exécutez la commande `php artisan migrate:fresh --seed` 
+Ensuite, pour créer les tables et avoir les données par défault, exécutez la commande `php artisan migrate:fresh --seed`.
 
 Enfin, exécutez la commande suivante : `composer install`.
 Cela installera toutes les dépendances que Laravel aura besoin.
+
+Pour avois la possibilité d'ajouter des images de plats en local, vous devez effectuer cette commande : `php artisan storage:link`.
 
 ## Executer le projet avec php
 Pour exécuter le projet de Laravel, exécutez la commande `php artisan serve`.  
