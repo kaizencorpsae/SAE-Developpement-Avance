@@ -120,7 +120,7 @@ html {
         background-color: #d5715f !important;
     }
 }
-.crud input,a.crud,.lmcinput,.divbtn>button{
+a.crud,.lmcinput,.divbtn>button{
     background-color: rgba(255, 255, 255, 0.1);
     border: none !important;
     transition: 0.5s;

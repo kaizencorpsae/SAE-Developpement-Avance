@@ -6,7 +6,7 @@
     <h1 class="text-3xl font-semibold">Recherchez votre plat ou ingrédient :</h1>
 </header>
 
-<div id="selecteur" class="crud flex justify-center relative mx-auto mt-8 px-6 py-15" style="max-width: 50rem;">
+<div id="selecteur" class="crud flex justify-center relative mx-auto mt-4 mb-4 px-6 py-15" style="max-width: 50rem;">
     <input type="text" placeholder="Chercher un plat" class="p-3 rounded-lg bg-main-700 text-white flex-1">
 </div>
 
@@ -56,7 +56,14 @@
             resultContainer.innerHTML = '';
 
             // Met à jour le nombre de plats trouvés
-            countElement.textContent = `Nombre de plats trouvés : ${plats.length}`;
+            nbplats = `—`;
+            if(query){
+                nbplats = `${plats.length}`;
+            }
+            if(nbplats>=30){
+                nbplats += " (max)";
+            }
+            countElement.textContent = `Nombre de plats trouvés : `+nbplats;
 
             // Ajoute chaque plat dans le conteneur
             plats.forEach(plat => {

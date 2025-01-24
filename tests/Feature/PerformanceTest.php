@@ -21,7 +21,7 @@ class PerformanceTest extends TestCase
         $startTime = microtime(true);
         DB::table('plats')->where('id', $count-1)->first();
         $endTime = microtime(true);
-        echo "Résultat avec ". $count . " " . lcfirst(class_basename($table)) . "s : " . $endTime - $startTime;
+        echo "Résultat avec ". $count . " " . lcfirst(class_basename($table)) . "s : " . $endTime - $startTime . "\n";
         assertTrue(true);
     }
 
@@ -33,7 +33,7 @@ class PerformanceTest extends TestCase
             DB::table('plats')->where('id', $count-$i)->first();
         }
         $endTime = microtime(true);
-        echo "Résultat avec ". $count . " " . lcfirst(class_basename($table)) . "s : " . $endTime - $startTime;
+        echo "Résultat avec ". $count . " " . lcfirst(class_basename($table)) . "s : " . $endTime - $startTime . "\n";
         assertTrue(true);
     }
 
@@ -49,7 +49,7 @@ class PerformanceTest extends TestCase
         }
 
         $endTime = microtime(true);
-        echo "Résultat avec ". $count . " plats : " . $endTime - $startTime;
+        echo "Résultat avec ". $count . " plats : " . $endTime - $startTime . "\n";
         assertTrue(true);
     }
 

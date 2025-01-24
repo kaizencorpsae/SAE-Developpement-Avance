@@ -19,7 +19,7 @@
                     </p>
                 </div>
                 <div class="py-10 px-4">
-                    <a href="#searchdiv" onclick="document.querySelector('#search').focus();" class="inputmain text-white py-2 px-4 rounded-lg">
+                    <a href="{{ route('search') }}" class="inputmain text-white py-2 px-4 rounded-lg">
                         Rechercher un plat
                     </a>
                 </div>
