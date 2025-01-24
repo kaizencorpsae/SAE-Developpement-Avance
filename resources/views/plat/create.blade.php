@@ -69,7 +69,7 @@
                 <ul class="text-xl list-none" id="preparation">
                     <li class="mb-4">
                         <p class="name text-main-grey alata my-2">— ÉTAPE 1 :</p>
-                        <input type="text" name="preparation[0]" required>
+                        <input class="text-lg w-full" type="text" name="preparation[0]" required>
                     </li>
                 </ul>
                 <button id="add_preparation" type="button" class="inputmain text-white py-2 px-5 rounded-lg">Ajouter une étape à la préparation</button><br>

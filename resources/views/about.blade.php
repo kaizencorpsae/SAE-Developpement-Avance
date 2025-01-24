@@ -26,12 +26,12 @@
                     <h4 class="text-3xl font-semibold mb-4 flex items-center">
                         Notre fonctionnement
                     </h4>
-                    <hr class="mr-6 mt-6 w-8/12">
+                    <hr class="mr-6 mt-6 w-7/12">
                 </div>
                 <p>
                     Nous nous organisons de manière à ce que chaque membre se sente à l’aise au travail et nous essayerons au maximum de séparer les tâches efficacement pour qu’aucun ne soit surmené ou à court de tâches.
                     <br><br>
-                    Nous programmons des séances de travail pendant chaque séance dédiée à la SAE. Cela peut se faire en distanciel et en présentiel en fonction de la disponibilité des membres de l’équipe.
+                    Nous programmons des séances de travail pendant chaque séance dédiée à la SAÉ. Cela peut se faire en distanciel et en présentiel en fonction de la disponibilité des membres de l’équipe.
                 </p>
             </div>
 
@@ -52,12 +52,11 @@
                             <div class="force">
                                 <p>Back-end</p>
                                 <p>Gestion de projet</p>
+                                <p>Git</p>
                                 <p>Gestion d’une équipe</p>
-                                <p>CE</p>
                             </div>
                             <div class="faiblesse">
                                 <p>Front-end</p>
-                                <p>CO</p>
                                 <p>Anglais</p>
                             </div>
                         </div>
@@ -71,14 +70,15 @@
                             <div class="force">
                                 <p>Front-end</p>
                                 <p>Anglais</p>
-                                <p>PHP</p>
                                 <p>Git</p>
                                 <p>Persévérance</p>
                                 <p>Esprit d’équipe</p>
-                            </div>
-                            <div class="faiblesse">
                                 <p>Base de données</p>
                                 <p>Structure de code</p>
+                            </div>
+                            <div class="faiblesse">
+                                <p>Gestion de projet</p>
+                                <p>Organisation</p>
                             </div>
                         </div>
                     </div>
@@ -89,13 +89,13 @@
                         </div>
                         <div class="flex justify-around">
                             <div class="force">
-                                <p>Php</p>
-                                <p>Full-stack</p>
+                                <p>PHP</p>
+                                <p>Back-end</p>
                                 <p>Autodidacte</p>
                             </div>
                             <div class="faiblesse">
                                 <p>Test logiciel</p>
-                                <p>Virtualisation</p>
+                                <p>Front-end</p>
                             </div>
                         </div>
                     </div>
@@ -127,14 +127,13 @@
                             <div class="force">
                                 <p>Créativité</p>
                                 <p>Anglais</p>
-                                <p>Algorithmie</p>
-                                <p>Javascript</p>
-                                <p>Back-end</p>
+                                <p>Communication</p>
                             </div>
                             <div class="faiblesse">
                                 <p>Front-end</p>
-                                <p>Communication</p>
+                                <p>Back-end</p>
                                 <p>Organisation</p>
+                                <p>Esprit d’équipe</p>
                             </div>
                         </div>
                     </div>

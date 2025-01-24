@@ -6,7 +6,7 @@
     <h1 class="text-3xl font-semibold">Recherchez votre plat ou ingrédient :</h1>
 </header>
 
-<div id="selecteur" class="crud flex justify-center relative mx-auto px-6 py-15" style="max-width: 50rem;">
+<div id="selecteur" class="crud flex justify-center relative mx-auto mt-8 px-6 py-15" style="max-width: 50rem;">
     <input type="text" placeholder="Chercher un plat" class="p-3 rounded-lg bg-main-700 text-white flex-1">
 </div>
 
@@ -18,7 +18,7 @@
     <h3 class="text-3xs font-semibold" id="errorMessage"></h3>
 </div>
 
-<div class="max-w-7xl mx-auto my-10 px-4">
+<div class="max-w-7xl mx-auto my-20 px-4">
     <div id="box_plats" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     </div>
 </div>
@@ -85,8 +85,8 @@
 @endif
 
 
-<div class="text-center mb-6">
-    <a href="/" class="inputmain text-white py-2 px-4 rounded-lg">
+<div class="text-center mt-28 mb-20">
+    <a href="/" class="inputmain text-white py-3 px-6 rounded-lg">
         Retour à l'accueil
     </a>
 </div>
