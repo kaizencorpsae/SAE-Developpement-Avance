@@ -18,7 +18,6 @@
                 <div class="ml-3">
                     <span>Ou via une url :</span>
                     <input type="text" name="image_web" id="image" placeholder="Url de l'image">
-                    <input type="hidden" name="image_id" value="">
                 </div>
             </div>
         </div>
