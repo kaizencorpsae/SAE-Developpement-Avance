@@ -235,20 +235,7 @@ class PlatController extends Controller
 
         // Ingrédients
         $ingredients = $request->input('ingredient');
-        $currentIngredients = $plat->ingredients->pluck('id')->toArray();
-        $ingredientsToAdd = array_diff($ingredients, $currentIngredients);
-        $ingredientsToRemove = array_diff($currentIngredients, $ingredients);
-
-        foreach ($ingredientsToAdd as $ingredient) {
-            $plat_ingredient = new Plat_ingredient();
-            $plat_ingredient->plat_id = $plat->id;
-            $plat_ingredient->ingredient_id = $ingredient;
-            $plat_ingredient->save();
-        }
-
-        Plat_ingredient::where('plat_id', $plat->id)
-            ->whereIn('ingredient_id', $ingredientsToRemove)
-            ->delete();
+        $plat->ingredients()->sync($ingredients); // Permet de supprimer les anciens ingrédients et d'ajouter les nouveaux
 
         return redirect()->route('plats.show', $id);
     }

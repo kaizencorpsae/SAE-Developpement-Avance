@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlatController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\ImageController;
 
 
 Route::get('/', [HomeController::class, 'index']);
@@ -19,6 +21,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('plats', PlatController::class)->only(['index', 'show']);
+Route::get('/get_ingredient_image/{id}', [ImageController::class, 'get_ingredient_image']);
 
 
 // Routes pour le tableau de bord en tant qu'administrateur

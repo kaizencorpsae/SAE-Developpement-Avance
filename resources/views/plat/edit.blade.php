@@ -51,11 +51,11 @@
                     </h4>
                     <hr class="mr-6 mt-6 w-8/12">
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 w-11/12">
+                <div id="list_ingredients" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 w-11/12">
                     @foreach($plat->ingredients as $key => $ingredient_plat)
                         <div class="ingredients max-w-7xl lmcborder flex flex-col rounded-xl items-center overflow-hidden shadow-xl">
                             <div class="bg-main-650 flex flex-row gap-1 items-center w-full py-3 px-4">
-                                <select class="text-2xl font-semibold amiri w-full" name="ingredient[]">
+                                <select class="text-2xl font-semibold amiri w-full" name="ingredient[]" onchange="updateIngredientImage(this)">
                                     @foreach($ingredients as $ingredient)
                                         <option value="{{ $ingredient->id }}"
                                             {{ $ingredient->id == $ingredient_plat->id ? 'selected' : '' }}>
@@ -67,14 +67,16 @@
                                     <button class="remove text-3xl" type="button" style="color:#ff876c; margin-left : 5px">×</button>
                                 @endif
                             </div>
-                            @if($ingredient_plat->image)
-                                <img
-                                    src="{{ $ingredient_plat->image->url }}"
-                                    class="w-full h-36 object-cover"
-                                    alt=" ">
-                            @else
-                                <img src="{{ asset('/images/unknownimage.png') }}" class="w-full h-40 object-cover rounded-3xl mb-4" alt="">
-                            @endif
+                            <div class="image_ingredient">
+                                @if($ingredient_plat->image)
+                                    <img
+                                        src="{{ $ingredient_plat->image->url }}"
+                                        class="w-full h-36 object-cover"
+                                        alt=" ">
+                                @else
+                                    <img src="{{ asset('/images/unknownimage.png') }}" class="w-full h-40 object-cover rounded-3xl mb-4" alt="">
+                                @endif
+                            </div>
                         </div>
                     @endforeach
 
@@ -112,8 +114,6 @@
             <input type="submit" value="Appliquer les modifications" class="inputmain text-white py-3 px-5 mt-4 rounded-lg">
 
         </div>
-
-
 
     </form>
 </section>

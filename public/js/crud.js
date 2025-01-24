@@ -1,24 +1,22 @@
-const ingredientsContainer = document.querySelector('.ingredients').parentElement;
+const ingredientsContainer = document.getElementById('list_ingredients')
 
 let count_ingr = ingredientsContainer.childElementCount;
 const add_ingredient = document.getElementById('add_ingredient');
 
-add_ingredient.addEventListener('click', function () {
-
-    // Incrémenter le compteur pour le prochain ingrédient
-    count_ingr++;
-
+add_ingredient.addEventListener('click', async function () {
     // Créer un conteneur pour le nouvel ingrédient
     const container = document.createElement('div');
-    container.id = `ingredients${count_ingr}`;
+    container.classList.add('ingredients', 'max-w-7xl', 'lmcborder', 'flex', 'flex-col', 'rounded-xl', 'items-center', 'overflow-hidden', 'shadow-xl');
 
-    // Créer un paragraphe pour le libellé
-    const p = document.createElement('p');
-    p.textContent = `Ingrédients ${count_ingr} :`;
+    // Créer la div avec la classe "bg-main-650 flex flex-row gap-1 items-center w-full py-3 px-4"
+    const innerContainer = document.createElement('div');
+    innerContainer.classList.add('bg-main-650', 'flex', 'flex-row', 'gap-1', 'items-center', 'w-full', 'py-3', 'px-4');
 
     // Créer un élément select
-    const s = document.createElement('select');
-    s.name = "ingredient[]";
+    const select = document.createElement('select');
+    select.classList.add('text-2xl', 'font-semibold', 'amiri', 'w-full');
+    select.name = "ingredient[]";
+    select.onchange = function() { updateIngredientImage(select); };
 
     // Copier les options existantes
     const firstSelect = ingredientsContainer.querySelector('select');
@@ -27,27 +25,46 @@ add_ingredient.addEventListener('click', function () {
             const newOption = document.createElement('option');
             newOption.value = option.value;
             newOption.textContent = option.textContent;
-            s.appendChild(newOption);
+            select.appendChild(newOption);
         });
     }
 
     // Créer un bouton de suppression
-    const b = createButtonRemove()
+    const buttonRemove = document.createElement('button');
+    buttonRemove.classList.add('remove', 'text-3xl');
+    buttonRemove.type = 'button';
+    buttonRemove.style.color = '#ff876c';
+    buttonRemove.style.marginLeft = '5px';
+    buttonRemove.textContent = '×';
 
     // Ajouter l'événement de suppression
-    b.addEventListener('click', function () {
-        container.remove();
-        count_ingr --;
+    buttonRemove.addEventListener('click', function () {
+       removeContainer(container);
     });
 
-    // Ajouter les éléments au conteneur
-    container.appendChild(p);
-    container.appendChild(s);
-    container.appendChild(b);
+    // Ajouter le select et le bouton de suppression à la div interne
+    innerContainer.appendChild(select);
+    innerContainer.appendChild(buttonRemove);
+
+    // Créer la div pour l'image de l'ingrédient
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image_ingredient');
+    const img = document.createElement('img');
+    img.src = await getImageUrl(1);
+    img.classList.add('w-full', 'h-40', 'object-cover');
+    imageContainer.appendChild(img);
+
+    // Ajouter les éléments au conteneur principal
+    container.appendChild(innerContainer);
+    container.appendChild(imageContainer);
 
     // Ajouter le conteneur au parent
     ingredientsContainer.appendChild(container);
+
+    // Incrémenter le compteur d'ingrédients
+    count_ingr++;
 });
+
 
 let divprepa = document.querySelector('#preparation');
 let ulprepa = divprepa.querySelector('ul');
@@ -96,9 +113,40 @@ function removeContainer(container) {
     container.remove()
 }
 
+// Bouttons deja existants
 const bs = document.querySelectorAll(".remove")
 bs.forEach((b)=>b.addEventListener('click', function () {
-    let div = b.parentElement
+    let div = b.closest('.ingredients')
     removeContainer(div)
 }))
+
+async function updateIngredientImage(selectElement) {
+    const ingredientId = selectElement.value;
+    const ingredientContainer = selectElement.closest('.ingredients');
+    const imageContainer = ingredientContainer.querySelector('.image_ingredient');
+    const imageElement = imageContainer.querySelector('img');
+
+    imageElement.src = await getImageUrl(ingredientId);
+}
+
+async function getImageUrl(id) {
+    try {
+        const response = await fetch(`/get_ingredient_image/${id}`);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data && data.imageUrl) {
+            return data.imageUrl;
+        } else {
+            console.error('La réponse ne contient pas de clé "imageUrl".');
+        }
+    } catch (error) {
+        console.error('Erreur lors de la récupération de l\'image de l\'ingrédient:', error);
+    }
+    return '/images/unknownimage.png';
+}
 
