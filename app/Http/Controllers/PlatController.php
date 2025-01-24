@@ -117,25 +117,24 @@ class PlatController extends Controller
         // Image
         $image = new Image();
 
+        // Image
         $file = $request->file('image');
-
-        $id_image = 1;
-        if ($file) {
+        $url = $request->input('image_web');
+        if ($file) { // Si c'est une image en local
             $path = $file->store('images/plats', 'public');
-
             $image->url = Storage::url($path);
-
-            $image->save();
-
-            $id_image = $image->id;
+        }
+        else{ // Si c'est un url
+            $image->url = $url;
         }
 
+        $image->save();
 
         $plat = new Plat();
 
         $plat->nom = $request->input('nom');
         $plat->description = $request->input('description');
-        $plat->image_id = $id_image;
+        $plat->image_id = $image->id;
 
         // Préparation
         $preparation = implode("\n", $request->input('preparation'));
@@ -145,6 +144,7 @@ class PlatController extends Controller
 
         // Ingrédients
         $ingredients = $request->input('ingredient');
+        $ingredients = array_unique($ingredients);
         foreach ($ingredients as $ingredient) {
             $plat_ingredient = new Plat_ingredient();
 
