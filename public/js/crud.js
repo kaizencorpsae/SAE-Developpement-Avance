@@ -31,11 +31,12 @@ add_ingredient.addEventListener('click', async function () {
 
     // Créer un bouton de suppression
     const buttonRemove = document.createElement('button');
-    buttonRemove.classList.add('remove', 'text-3xl');
     buttonRemove.type = 'button';
+    buttonRemove.textContent = '×';
     buttonRemove.style.color = '#ff876c';
     buttonRemove.style.marginLeft = '5px';
-    buttonRemove.textContent = '×';
+    buttonRemove.classList.add('remove', 'text-3xl');
+
 
     // Ajouter l'événement de suppression
     buttonRemove.addEventListener('click', function () {
@@ -74,6 +75,7 @@ const add_preparation = document.getElementById('add_preparation');
 add_preparation.addEventListener('click', function () {
 
     let li = document.createElement('li')
+    li.classList.add('mb-4');
 
     let p = document.createElement('p')
     p.classList = ulprepa.querySelector('.name').classList;
@@ -82,6 +84,7 @@ add_preparation.addEventListener('click', function () {
     let input = document.createElement('input')
     input.type = "text"
     input.name = "preparation[" + count_prepa + "]"
+    input.classList.add('text-lg', 'w-full');
 
     const b = createButtonRemove()
     b.addEventListener('click', function () {
@@ -89,9 +92,13 @@ add_preparation.addEventListener('click', function () {
         count_prepa --;
     });
 
+    let divinputb = document.createElement('div')
+    divinputb.classList.add('flex', 'gap-2');
     li.append(p)
-    li.append(input)
-    li.append(b)
+    divinputb.append(input)
+    divinputb.append(b)
+    li.append(divinputb)
+
 
     createButtonRemove(li)
 
@@ -105,6 +112,7 @@ function createButtonRemove() {
     b.type = "button";
     b.style =  "color:#ff876c; margin-left : 5px";
     b.textContent = "×";
+    b.classList.add('remove', 'text-3xl');
 
     return b
 }
