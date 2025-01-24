@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\BDD;
 
 use App\Models\Image;
 use App\Models\Ingredient;
@@ -96,5 +96,10 @@ class PerformanceTest extends TestCase
     public function test_time_when_create_100_plats(): void
     {
         $this->assertCreatePlats(100);
+    }
+
+    public function test_time_when_create_1000_plats(): void
+    {
+        $this->assertCreatePlats(1000);
     }
 }
