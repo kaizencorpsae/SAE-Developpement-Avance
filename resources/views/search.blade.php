@@ -11,7 +11,7 @@
 </div>
 
 <div style="display: flex; justify-content: center">
-    <h3 class="text-3xs font-semibold" id="count">Nombre de plats trouvés : 0</h3>
+    <h3 class="text-3xs font-semibold" id="count"></h3>
 </div>
 
 <div class="alert alert-danger text-center mt-3" role="alert" style="display: none">
@@ -24,17 +24,37 @@
 </div>
 
 <script>
-    const selecteur = document.getElementById('selecteur')
-    selecteur.addEventListener('input', handlerSelector)
+    const selecteur = document.getElementById('selecteur');
+    selecteur.addEventListener('input', handlerSelector);
+
+    let duration;
+    let debounceTimeout;
+    const DEBOUNCE_DELAY = 200;
 
     // Récupère le texte de la barre de recherche
     function handlerSelector(event) {
         const query = event.target.value.trim();
-        platSelector(query)
+        duration = 0;
+
+        // Annuler le timeout précédent
+        if (debounceTimeout) {
+            clearTimeout(debounceTimeout);
+        }
+
+        // Définir un nouveau timeout pour appeler platSelector après le délai de debounce
+        debounceTimeout = setTimeout(() => {
+            platSelector(query);
+        }, DEBOUNCE_DELAY);
     }
 
+    const countElement = document.getElementById('count');
+
     async function platSelector(query) {
-        const errorMessage = document.getElementById('errorMessage');
+        console.log('Début de la requête pour la query:', query);
+
+        const startTime = performance.now();
+        let error;
+
         try {
             const response = await fetch(`/selecteur?query=${encodeURIComponent(query)}`);
 
@@ -50,44 +70,55 @@
             }
 
             const resultContainer = document.getElementById('box_plats');
-            const countElement = document.getElementById('count');
 
             // Réinitialise les plats
             resultContainer.innerHTML = '';
 
+            const endTime = performance.now();
+            duration = endTime - startTime;
+
             // Met à jour le nombre de plats trouvés
-            nbplats = `—`;
-            if(query){
-                nbplats = `${plats.length}`;
+            let textCount;
+            if (plats.length > 0) {
+                textCount = `${plats.length}/30 plats correspondants en ${duration} ms`;
+            } else {
+                textCount = 'Votre requête ne correspond à aucun plat';
             }
-            if(nbplats>=30){
-                nbplats += " (max)";
-            }
-            countElement.textContent = `Nombre de plats trouvés : `+nbplats;
+            countElement.textContent = textCount;
 
             // Ajoute chaque plat dans le conteneur
             plats.forEach(plat => {
                 resultContainer.insertAdjacentHTML('beforeend', plat);
             });
-        } catch (error) {
-            let txt = 'Erreur lors de la sélection des plats'
-            console.error(txt+':', error);
+        } catch (e) {
+            error = e
+        }
+
+        const errorMessage = document.getElementById('errorMessage');
+        if (error) {
+            let txt = 'Erreur lors de la sélection des plats';
+            console.error(txt + ':', error);
             errorMessage.parentElement.style.display = "block";
             errorMessage.textContent = txt;
+        } else {
+            errorMessage.parentElement.style.display = "none";
         }
+
+        console.log('Fin de la requête pour la query:', query);
     }
+
+    const input = selecteur.querySelector('input')
 </script>
 
 @if(isset($query))
     <script>
         platSelector("{{ $query }}");
-        const i = document.getElementById('selecteur').querySelector('input')
-        console.log(i)
-        i.value = "{{ $query }}";
+        input.value = "{{ $query }}";
     </script>
 @else
     <script>
         platSelector('')
+        input.value = "";
     </script>
 @endif
 
