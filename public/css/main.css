@@ -53,6 +53,9 @@ html {
 .amiri{
     font-family: Amiri, serif;
 }
+.segoe{
+    font-family: "Segoe UI", serif;
+}
 
 .ptheader {
     padding-top: 5rem;
@@ -236,7 +239,7 @@ html {
     }
     height: 100%;
 }
-.linkheader a:after,.formheaderlmc:after {
+.linkheader a:after:not(.noheader),.formheaderlmc:after {
     content: '';
     position: absolute;
     background-color: var(--main-light-color);

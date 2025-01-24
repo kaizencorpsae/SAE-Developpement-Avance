@@ -66,11 +66,11 @@ class PlatController extends Controller
         <!-- Boutons modifier et supprimer -->
         ' . (auth()->user() && auth()->user()->is_admin ? '
             <div class="flex justify-center space-x-4 mt-4">
-                <a href="' . route('plats.edit', $plat->id) . '" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Modifier</a>
+                <a href="' . route('plats.edit', $plat->id) . '" class="px-4 py-2 text-white rounded lmcinput">Modifier</a>
                 <form action="' . route('plats.destroy', $plat->id) . '" method="post" class="inline">
                     ' . csrf_field() . '
                     ' . method_field("delete") . '
-                    <input type="submit" value="Supprimer" class="px-4 py-2 bg-red-400 text-white rounded hover:bg-red-600 cursor-pointer">
+                    <input type="submit" value="Supprimer" class="px-4 py-2 text-white rounded cursor-pointer lmcinputred">
                 </form>
             </div>
         ' : '') . '

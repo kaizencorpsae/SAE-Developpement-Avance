@@ -54,18 +54,18 @@
 
             @auth
             @if(auth()->user()-> is_admin)  <!-- Afficher les boutons si l'utilisateur est administrateur -->
-                <div class="flex space-x-5 items-center">
-                    <a href="{{ route('plats.create') }}" class="px-4 py-2 crud">Ajouter un plat</a>
+                <div class="flex space-x-5 items-center h-full">
+                    <a href="{{ route('plats.create') }}" class="px-4 py-2 crud rounded-lg nohover">Ajouter un plat</a>
 
-                    <a href="{{route('profile.edit')}}">
+                    <a href="{{route('profile.edit')}}" class="h-full flex items-center">
                         <!-- Icône pour le profil et-->
                         <i class="fa-light fa-user text-gray-200 text-3xl" title="Profil"></i>
                     </a>
 
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form class="formheaderlmc h-full flex items-center" method="POST" action="{{ route('logout') }}">
                         @csrf
                         <!-- Icône de déconnexion -->
-                        <i class="fa-light fa-right-from-bracket text-gray-200 text-3xl  cursor-pointer"
+                        <i class="fa-light fa-right-from-bracket text-gray-200 text-3xl cursor-pointer"
                         title="Se déconnecter"
                         onclick="this.closest('form').submit();"></i>
                     </form>

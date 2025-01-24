@@ -41,7 +41,7 @@
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
             </div>
 
-            <div class="mt-6 flex justify-end divbtn">
+            <div class="mt-6 flex justify-end divbtn gap-2">
                 <div class="divbtn">
                     <x-secondary-button x-on:click="$dispatch('close')">
                         {{ __('Annuler') }}
